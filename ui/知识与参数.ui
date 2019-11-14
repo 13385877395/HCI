@@ -19,7 +19,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>1</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="widget">
         <attribute name="icon">
@@ -298,7 +298,7 @@ p, li { white-space: pre-wrap; }
         <attribute name="title">
          <string>陈述知识</string>
         </attribute>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="state_add_class">
          <property name="geometry">
           <rect>
            <x>320</x>
@@ -311,7 +311,7 @@ p, li { white-space: pre-wrap; }
           <string>增加</string>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_3">
+        <widget class="QComboBox" name="state_comboBox_kge">
          <property name="geometry">
           <rect>
            <x>300</x>
@@ -321,7 +321,7 @@ p, li { white-space: pre-wrap; }
           </rect>
          </property>
         </widget>
-        <widget class="QTextBrowser" name="textBrowser_3">
+        <widget class="QTextBrowser" name="state_textBrowser">
          <property name="geometry">
           <rect>
            <x>110</x>
@@ -338,7 +338,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="state_lineEdit_classname">
          <property name="geometry">
           <rect>
            <x>100</x>
@@ -364,7 +364,7 @@ p, li { white-space: pre-wrap; }
           <string>陈述知识预览</string>
          </property>
         </widget>
-        <widget class="QListWidget" name="listWidget_3">
+        <widget class="QListWidget" name="state_all_class">
          <property name="geometry">
           <rect>
            <x>470</x>
@@ -373,11 +373,6 @@ p, li { white-space: pre-wrap; }
            <height>192</height>
           </rect>
          </property>
-         <item>
-          <property name="text">
-           <string>知识名                                  知识槽                                  ...</string>
-          </property>
-         </item>
         </widget>
         <widget class="QLabel" name="label_7">
          <property name="geometry">
@@ -418,7 +413,7 @@ p, li { white-space: pre-wrap; }
           <string>陈述知识定义</string>
          </property>
         </widget>
-        <widget class="QListWidget" name="listWidget_4">
+        <widget class="QListWidget" name="state_all">
          <property name="geometry">
           <rect>
            <x>470</x>
@@ -459,7 +454,7 @@ p, li { white-space: pre-wrap; }
           <string/>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_4">
+        <widget class="QComboBox" name="state_comboBox_Class">
          <property name="geometry">
           <rect>
            <x>250</x>
@@ -469,7 +464,7 @@ p, li { white-space: pre-wrap; }
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="state_add">
          <property name="geometry">
           <rect>
            <x>110</x>
@@ -567,7 +562,7 @@ p, li { white-space: pre-wrap; }
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_6">
+        <widget class="QLineEdit" name="state_lineEdit_name">
          <property name="geometry">
           <rect>
            <x>90</x>
@@ -619,7 +614,7 @@ p, li { white-space: pre-wrap; }
           <string>初始知识</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="state_plus">
          <property name="geometry">
           <rect>
            <x>50</x>
@@ -628,11 +623,14 @@ p, li { white-space: pre-wrap; }
            <height>21</height>
           </rect>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string>+</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="state_minus">
          <property name="geometry">
           <rect>
            <x>80</x>
@@ -640,6 +638,9 @@ p, li { white-space: pre-wrap; }
            <width>21</width>
            <height>21</height>
           </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="text">
           <string>-</string>
