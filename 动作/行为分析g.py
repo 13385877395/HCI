@@ -1,11 +1,15 @@
 import sys
 
+from PyQt5.QtGui import QCursor
+
 sys.path.append('../ui/')
 sys.path.append('../类/')
 from PyQt5.QtWidgets import QApplication, QMessageBox
 from 行为分析 import Ui_Frame
 from PyQt5 import QtWidgets
 from CProcedure import proModeling, showall
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QMenu
 
 
 class actForm(QtWidgets.QWidget, Ui_Frame):
@@ -20,12 +24,19 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.pushButton_4.clicked.connect(self.Preview1)
         self.pushButton_3.clicked.connect(self.add1)
         self.listWidget_4.itemClicked.connect(self.QLWclicked1)
+        self.listWidget_4.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.listWidget_4.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_4))
         # 视频建模
         self.pushButton_2.clicked.connect(self.Preview2)
         self.pushButton_5.clicked.connect(self.add2)
         self.listWidget_6.itemClicked.connect(self.QLWclicked2)
+        self.listWidget_6.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.listWidget_6.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_6))
         # 生成式
         self.listWidget_5.itemClicked.connect(self.QLWclicked3)
+        self.listWidget_5.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
+
 
     # 获取手工建模的条件和结果
     def get1(self):
@@ -64,7 +75,6 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         # print(self.get1())
         condition, result = self.get1()
         if condition[0] not in self.names:
-            # self.names.append(condition[0])
             self.textBrowser_4.setText(self.models.makeModel(condition, result))
         else:
             QMessageBox.information(self, "Information",
@@ -160,6 +170,41 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             self.textBrowser.setText(self.models.model[self.models.name.index(item.text())])
         except Exception as e:
             print(e)
+
+    # 右键弹出菜单
+    def rightMenuShow(self, qlw):
+        try:
+            self.contextMenu = QMenu()
+            self.delete = self.contextMenu.addAction(u'删除')
+            self.clear = self.contextMenu.addAction(u'清除')
+            self.contextMenu.popup(QCursor.pos())  # 2菜单显示的位置
+            self.delete.triggered.connect(lambda: self.onActionDelete(qlw))
+            self.clear.triggered.connect(lambda: self.onActionClear(qlw))
+            self.contextMenu.show()
+        except Exception as e:
+            print(e)
+
+    # 删除
+    def onActionDelete(self, qlw):
+        num = qlw.currentRow()
+        name = qlw.currentItem().text()
+        self.delmodel(name)
+        self.listWidget_4.takeItem(num)
+        self.listWidget_6.takeItem(num)
+        self.listWidget_5.takeItem(num)
+
+    def onActionClear(self, qlw):
+        pass
+
+    def delmodel(self, name):
+        num = self.models.name.index(name)
+        self.models.time.pop(num)
+        self.models.name.pop(num)
+        self.models.condition.pop(num)
+        self.models.result.pop(num)
+        self.models.model.pop(num)
+        self.models.len -= 1
+
 
     # def closeEvent(self, event):
     #     title = self.names[0] + '.txt'

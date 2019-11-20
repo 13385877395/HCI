@@ -16,12 +16,12 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
+     <item row="0" column="1">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
-       <widget class="QWidget" name="widget">
+       <widget class="QWidget" name="system">
         <attribute name="icon">
          <iconset resource="../SUBCMS/resources.qrc">
           <normaloff>:/images/resources/button-2.png</normaloff>:/images/resources/button-2.png</iconset>
@@ -144,7 +144,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_4">
+       <widget class="QWidget" name="model">
         <attribute name="icon">
          <iconset resource="../SUBCMS/resources.qrc">
           <normaloff>:/images/resources/button-5.png</normaloff>:/images/resources/button-5.png</iconset>
@@ -290,7 +290,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_3">
+       <widget class="QWidget" name="state">
         <attribute name="icon">
          <iconset resource="../SUBCMS/resources.qrc">
           <normaloff>:/images/resources/button-3.png</normaloff>:/images/resources/button-3.png</iconset>
@@ -428,32 +428,6 @@ p, li { white-space: pre-wrap; }
           </property>
          </item>
         </widget>
-        <widget class="QLabel" name="label_11">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>280</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>槽</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_4">
-         <property name="geometry">
-          <rect>
-           <x>290</x>
-           <y>280</y>
-           <width>111</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
         <widget class="QComboBox" name="state_comboBox_Class">
          <property name="geometry">
           <rect>
@@ -467,8 +441,8 @@ p, li { white-space: pre-wrap; }
         <widget class="QPushButton" name="state_add">
          <property name="geometry">
           <rect>
-           <x>110</x>
-           <y>430</y>
+           <x>320</x>
+           <y>450</y>
            <width>75</width>
            <height>23</height>
           </rect>
@@ -488,78 +462,6 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="text">
           <string>知识类名称</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_5">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>280</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_13">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>280</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>值</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_15">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>330</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>槽</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_16">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>330</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>值</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_5">
-         <property name="geometry">
-          <rect>
-           <x>290</x>
-           <y>330</y>
-           <width>111</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_6">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>330</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
          </property>
         </widget>
         <widget class="QLineEdit" name="state_lineEdit_name">
@@ -604,8 +506,8 @@ p, li { white-space: pre-wrap; }
         <widget class="QCheckBox" name="checkBox">
          <property name="geometry">
           <rect>
-           <x>110</x>
-           <y>380</y>
+           <x>180</x>
+           <y>450</y>
            <width>121</width>
            <height>16</height>
           </rect>
@@ -614,37 +516,143 @@ p, li { white-space: pre-wrap; }
           <string>初始知识</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="state_plus">
+        <widget class="QWidget" name="">
          <property name="geometry">
           <rect>
            <x>50</x>
-           <y>330</y>
-           <width>21</width>
-           <height>21</height>
+           <y>280</y>
+           <width>361</width>
+           <height>91</height>
           </rect>
          </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>+</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="state_minus">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>330</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>-</string>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="1" column="5">
+           <widget class="QLabel" name="label_value2">
+            <property name="text">
+             <string>值</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="6">
+           <widget class="QLineEdit" name="lineEdit_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QLabel" name="label_value1">
+            <property name="text">
+             <string>值</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="label_slot2">
+            <property name="text">
+             <string>槽</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QComboBox" name="comboBox_2"/>
+          </item>
+          <item row="0" column="6">
+           <widget class="QLineEdit" name="lineEdit_1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label_slot1">
+            <property name="text">
+             <string>槽</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QComboBox" name="comboBox_1"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="state_minus">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="state_plus">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
