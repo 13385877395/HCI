@@ -422,11 +422,6 @@ p, li { white-space: pre-wrap; }
            <height>192</height>
           </rect>
          </property>
-         <item>
-          <property name="text">
-           <string>知识名         知识类                     知识槽                                  ...</string>
-          </property>
-         </item>
         </widget>
         <widget class="QComboBox" name="state_comboBox_Class">
          <property name="geometry">
@@ -516,12 +511,12 @@ p, li { white-space: pre-wrap; }
           <string>初始知识</string>
          </property>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>50</x>
-           <y>280</y>
-           <width>361</width>
+           <y>290</y>
+           <width>371</width>
            <height>91</height>
           </rect>
          </property>
@@ -536,10 +531,16 @@ p, li { white-space: pre-wrap; }
           <item row="1" column="6">
            <widget class="QLineEdit" name="lineEdit_2">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
             </property>
             <property name="text">
              <string/>
@@ -566,10 +567,16 @@ p, li { white-space: pre-wrap; }
           <item row="0" column="6">
            <widget class="QLineEdit" name="lineEdit_1">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
             </property>
             <property name="text">
              <string/>
