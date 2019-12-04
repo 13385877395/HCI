@@ -32,19 +32,30 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
 
         # 模型参数右键菜单
         self.model_all.setContextMenuPolicy( QtCore.Qt.CustomContextMenu )
-        self.model_all.customContextMenuRequested.connect( self.rightMenuShowSYS )
+        self.model_all.customContextMenuRequested.connect( self.rightMenuShowMODEL )
 
-        #陈述知识类参数
+        # 陈述知识类参数
         self.stateCalssFeatureList = list()
         self.state_all_class.addItem('知识名\t\t知识槽\t\t...')
         self.state_add_class.clicked.connect(self.buttonStateClassAdd)
+
+        # 陈述知识类参数右键菜单
+        self.state_all_class.setContextMenuPolicy( QtCore.Qt.CustomContextMenu )
+        self.state_all_class.customContextMenuRequested.connect( self.rightMenuShowSTATACLASS )
 
         #陈述知识参数
         self.stateFeatureList = list()
         self.state_all.addItem('知识名\t\t知识类\t\t知识槽\t\t...')
         self.state_add.clicked.connect(self.buttonStateAdd)
 
+        # 陈述知识参数右键菜单
+        self.state_all.setContextMenuPolicy( QtCore.Qt.CustomContextMenu )
+        self.state_all.customContextMenuRequested.connect( self.rightMenuShowSTATA )
+
         # 陈述知识槽增减
+        self.stateSolt = 2
+        self.state_plus.clicked.connect(self.buttonStatePlus)
+        self.state_minus.clicked.connect(self.buttonStateMinus)
 
     # 系统参数
     def butonSysAdd(self):
@@ -126,23 +137,61 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         else:
             self.model_all.addItem(modelName + '\t\t' + modelType + '\t\t' + modelDefault)
         self.modelFeatureList.append((modelName, modelType, modelDefault))
+        self.showmodel()
+
+    # 模型更改参数显示预览
+    def showmodel(self):
         # 调用函数返回预览字符串
-        self.MODELSTRING = getprint2(self.modelFeatureList)
+        self.MODELSTRING = getprint2( self.modelFeatureList )
         # 在预览中加载字符串
-        self.model_textBrowser.setText(self.MODELSTRING)
+        self.model_textBrowser.setText( self.MODELSTRING )
 
         # 更改陈述知识内知识槽
         self.state_comboBox_kge.clear()
         for feature in self.modelFeatureList:
-            self.state_comboBox_kge.addItem(feature[0])
+            self.state_comboBox_kge.addItem( feature[0] )
         # 更改陈述知识内槽
-        self.comboBox_5.clear()
+        self.comboBox_1.clear()
         for feature in self.modelFeatureList:
-            self.state_comboBox_kge.addItem( feature[0] )
-        self.comboBox_6.clear()
+            self.comboBox_1.addItem( feature[0] )
+        self.comboBox_2.clear()
         for feature in self.modelFeatureList:
-            self.state_comboBox_kge.addItem( feature[0] )
-        # 通过计数方式更改
+            self.comboBox_2.addItem( feature[0] )
+        # # 通过计数方式更改
+
+        pass
+    # 模型参数右键菜单
+    def rightMenuShowMODEL(self):
+        self.model_contextMenu = QMenu()
+        self.model_delete = self.model_contextMenu.addAction( u'删除' )
+        self.model_clear = self.model_contextMenu.addAction( u'清除' )
+        self.model_contextMenu.popup( QCursor.pos() )  # 2菜单显示的位置
+        self.model_delete.triggered.connect( self.onActionDeleteMODEL )
+        self.model_clear.triggered.connect( self.onActionClearMODEL )
+        self.model_contextMenu.show()
+
+    # 模型参数右键删除
+    def onActionDeleteMODEL(self):
+        row = self.model_all.currentRow()
+        if (row != 0):
+            # 删除
+            modelFeatureState =False
+            freeFeature = None
+            for feature in self.modelFeatureList:
+                if self.model_all.item( row ).text().split()[0] in feature:
+                    modelFeatureState = True
+                    freeFeature = feature
+            if modelFeatureState:
+                self.modelFeatureList.remove( freeFeature )
+                self.model_all.takeItem(row)
+            self.showmodel()
+
+    # 模型参数右键清除
+    def onActionClearMODEL(self):
+        self.model_all.clear()
+        self.modelFeatureList = list()
+        self.model_all.addItem('参数\t\t类型\t\t缺省值')
+        self.showmodel()
 
     # 陈述知识类参数
     def buttonStateClassAdd(self):
@@ -174,12 +223,89 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         for feature in self.stateCalssFeatureList:
             self.state_comboBox_Class.addItem(feature[0])
 
+    # 陈述知识类参数右键菜单
+    def rightMenuShowSTATACLASS(self):
+        self.state_contextMenu = QMenu()
+        self.state_delete = self.state_contextMenu.addAction( u'删除' )
+        self.state_clear = self.state_contextMenu.addAction( u'清除' )
+        self.state_contextMenu.popup( QCursor.pos() )  # 2菜单显示的位置
+        self.state_delete.triggered.connect( self.onActionDeleteSTATECLASS )
+        self.state_clear.triggered.connect( self.onActionClearSTATECLASS )
+        self.state_contextMenu.show()
+
+    # 陈述知识类参数右键删除
+    def onActionDeleteSTATECLASS(self):
+        row = self.state_all_class.currentRow()
+        if (row != 0):
+            # 删除
+            stateFeatureState = False
+            freeFeature = None
+            for feature in self.stateCalssFeatureList:
+                if self.state_all_class.item( row ).text().split()[0] in feature:
+                    stateFeatureState = True
+                    freeFeature = feature
+            if stateFeatureState:
+                self.stateCalssFeatureList.remove( freeFeature )
+                self.state_all_class.takeItem(row)
+        # 更改陈述知识内知识类
+        self.state_comboBox_Class.clear()
+        for feature in self.stateCalssFeatureList:
+            self.state_comboBox_Class.addItem( feature[0] )
+
+
+    # 陈述知识类参数右键清除
+    def onActionClearSTATECLASS(self):
+        self.state_all_class.clear()
+        self.stateCalssFeatureList = list()
+        self.state_all_class.addItem('知识名\t\t知识槽\t\t...')
+        # 更改陈述知识内知识类
+        self.state_comboBox_Class.clear()
+        for feature in self.stateCalssFeatureList:
+            self.state_comboBox_Class.addItem( feature[0] )
+
     # 陈述知识参数
     def buttonStateAdd(self):
         # 获取参数
         stateName = self.state_lineEdit_name.text()
         stateClassName = self.state_comboBox_Class.currentText()
 
+    # 陈述知识参数右键菜单
+    def rightMenuShowSTATA(self):
+        self.state_contextMenu = QMenu()
+        self.state_delete = self.state_contextMenu.addAction( u'删除' )
+        self.state_clear = self.state_contextMenu.addAction( u'清除' )
+        self.state_contextMenu.popup( QCursor.pos() )  # 2菜单显示的位置
+        self.state_delete.triggered.connect( self.onActionDeleteSTATE )
+        self.state_clear.triggered.connect( self.onActionClearSTATE )
+        self.state_contextMenu.show()
+
+    # 陈述知识参数右键删除
+    def onActionDeleteSTATE(self):
+        row = self.state_all.currentRow()
+        if (row != 0):
+            # 删除
+            stateFeatureState = False
+            freeFeature = None
+            for feature in self.stateFeatureList:
+                if self.state_all.item( row ).text().split()[0] in feature:
+                    stateFeatureState = True
+                    freeFeature = feature
+            if stateFeatureState:
+                self.stateFeatureList.remove( freeFeature )
+                self.state_all.takeItem( row )
+
+    # 陈述知识参数右键清除
+    def onActionClearSTATE(self):
+        self.state_all.clear()
+        self.stateFeatureList = list()
+        self.state_all.addItem('知识名\t\t知识类\t\t知识槽\t\t...')
+
+    # 陈述知识槽增减
+    def buttonStatePlus(self):
+        pass
+
+    def buttonStateMinus(self):
+        pass
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
