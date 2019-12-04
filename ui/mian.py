@@ -8,18 +8,17 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-# import sys
-# sys.path.append('../样式/')
-# sys.path.append('样式/')
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1085, 807)
+        MainWindow.resize(981, 776)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout_3.setObjectName("gridLayout_3")
         self.sideBar = QtWidgets.QWidget(self.centralwidget)
-        self.sideBar.setGeometry(QtCore.QRect(0, 0, 107, 768))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -110,15 +109,17 @@ class Ui_MainWindow(object):
         self.toolButton_1.raise_()
         self.toolButton_3.raise_()
         self.toolButton_4.raise_()
-        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(110, 0, 971, 781))
-        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_3.addWidget(self.sideBar, 0, 0, 1, 1)
+        self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
+        self.gridLayout_3.addLayout(self.gridLayout, 0, 1, 1, 1)
+        self.horizontalScrollBar = QtWidgets.QScrollBar(self.centralwidget)
+        self.horizontalScrollBar.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalScrollBar.setObjectName("horizontalScrollBar")
+        self.gridLayout_3.addWidget(self.horizontalScrollBar, 1, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1085, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 981, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

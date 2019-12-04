@@ -10,6 +10,18 @@
     <height>781</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>2</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>780</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
@@ -19,7 +31,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="widget">
         <attribute name="icon">
@@ -29,49 +41,52 @@
         <attribute name="title">
          <string>模型预览</string>
         </attribute>
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>660</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>模型检查</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="textEdit">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>70</y>
-           <width>831</width>
-           <height>551</height>
-          </rect>
-         </property>
-         <property name="html">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="3" column="0">
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="text">
+            <string>模型检查</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>认知模型</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QTextEdit" name="textEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_16">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>40</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>认知模型</string>
-         </property>
-        </widget>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
        <widget class="QWidget" name="tab_3">
         <attribute name="icon">
@@ -81,81 +96,46 @@ p, li { white-space: pre-wrap; }
         <attribute name="title">
          <string>模型运行</string>
         </attribute>
-        <widget class="QPushButton" name="pushButton">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>80</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Run</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>50</y>
-           <width>241</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Model Name:Three position</string>
-         </property>
-        </widget>
-        <widget class="QTextBrowser" name="textBrowser">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>120</y>
-           <width>791</width>
-           <height>571</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>80</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Pause</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="geometry">
-          <rect>
-           <x>220</x>
-           <y>80</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Clear</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="geometry">
-          <rect>
-           <x>310</x>
-           <y>80</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Restart</string>
-         </property>
-        </widget>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0" colspan="3">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Model Name:Three position</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Run</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>Pause</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="text">
+            <string>Restart</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="4">
+          <widget class="QTextBrowser" name="textBrowser"/>
+         </item>
+        </layout>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="icon">
@@ -165,525 +145,427 @@ p, li { white-space: pre-wrap; }
         <attribute name="title">
          <string>参数调整</string>
         </attribute>
-        <widget class="QLabel" name="label_5">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>30</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>时间</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_6">
-         <property name="geometry">
-          <rect>
-           <x>500</x>
-           <y>30</y>
-           <width>113</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_24">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>30</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>系统参数</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="geometry">
-          <rect>
-           <x>770</x>
-           <y>630</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>保存</string>
-         </property>
-        </widget>
-        <widget class="QTextBrowser" name="textBrowser_5">
-         <property name="geometry">
-          <rect>
-           <x>470</x>
-           <y>410</y>
-           <width>381</width>
-           <height>191</height>
-          </rect>
-         </property>
-         <property name="html">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_24">
+           <property name="text">
+            <string>系统参数</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>时间</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_6">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>条件</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4" rowspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QComboBox" name="comboBox_21">
+               <item>
+                <property name="text">
+                 <string>goal</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_20">
+               <item>
+                <property name="text">
+                 <string>start</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QComboBox" name="comboBox_23">
+               <item>
+                <property name="text">
+                 <string>IS</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;=</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_24">
+               <item>
+                <property name="text">
+                 <string>=</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QLineEdit" name="lineEdit_11">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_28">
+           <property name="text">
+            <string>模型参数</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>+</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QComboBox" name="comboBox_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2" colspan="2">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>结果</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4" rowspan="2" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QComboBox" name="comboBox_17">
+               <item>
+                <property name="text">
+                 <string>goal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>count-order</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_18">
+               <item>
+                <property name="text">
+                 <string>retrieve</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_19">
+               <item>
+                <property name="text">
+                 <string>first</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QComboBox" name="comboBox_16">
+               <item>
+                <property name="text">
+                 <string>count</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;=</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_15">
+               <item>
+                <property name="text">
+                 <string>IS</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&gt;=</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>&lt;=</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_22">
+               <item>
+                <property name="text">
+                 <string>=</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QLineEdit" name="lineEdit_13">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_7">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_12">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_29">
+           <property name="text">
+            <string>陈述知识</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QPushButton" name="pushButton_10">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>+</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QPushButton" name="pushButton_9">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_30">
+           <property name="text">
+            <string>过程知识</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2" colspan="2">
+          <widget class="QLabel" name="label_27">
+           <property name="text">
+            <string>过程知识</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" rowspan="2" colspan="2">
+          <widget class="QListWidget" name="listWidget_6">
+           <item>
+            <property name="text">
+             <string>start</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="6" column="2" colspan="4">
+          <widget class="QTextBrowser" name="textBrowser_5">
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_14">
-         <property name="geometry">
-          <rect>
-           <x>500</x>
-           <y>110</y>
-           <width>31</width>
-           <height>21</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_15">
-         <property name="geometry">
-          <rect>
-           <x>650</x>
-           <y>200</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>IS</string>
-          </property>
+           </property>
+          </widget>
          </item>
-         <item>
-          <property name="text">
-           <string>=</string>
-          </property>
+         <item row="7" column="5">
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>保存</string>
+           </property>
+          </widget>
          </item>
-         <item>
-          <property name="text">
-           <string>&gt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&gt;=</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;=</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_16">
-         <property name="geometry">
-          <rect>
-           <x>650</x>
-           <y>170</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>count</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>=</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&gt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&gt;=</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;=</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_17">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>170</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>goal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>count-order</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_18">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>200</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>retrieve</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_11">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>170</y>
-           <width>71</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>结果</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_7">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>200</y>
-           <width>111</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_10">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>110</y>
-           <width>113</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_11">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>70</y>
-           <width>113</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_19">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>230</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>first</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_13">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>70</y>
-           <width>71</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>条件</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_20">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>110</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>start</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_21">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>70</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>goal</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_12">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>230</y>
-           <width>111</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_22">
-         <property name="geometry">
-          <rect>
-           <x>650</x>
-           <y>230</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>=</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_23">
-         <property name="geometry">
-          <rect>
-           <x>650</x>
-           <y>70</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>IS</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>=</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&gt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&gt;=</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>&lt;=</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_13">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>170</y>
-           <width>113</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_24">
-         <property name="geometry">
-          <rect>
-           <x>650</x>
-           <y>110</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>=</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_27">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>370</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>过程知识</string>
-         </property>
-        </widget>
-        <widget class="QListWidget" name="listWidget_6">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>410</y>
-           <width>411</width>
-           <height>251</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>start</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_28">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>120</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>模型参数</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_29">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>220</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>陈述知识</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_30">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>380</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>过程知识</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_7">
-         <property name="geometry">
-          <rect>
-           <x>430</x>
-           <y>110</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>+</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_8">
-         <property name="geometry">
-          <rect>
-           <x>460</x>
-           <y>110</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>-</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_9">
-         <property name="geometry">
-          <rect>
-           <x>500</x>
-           <y>230</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>-</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_10">
-         <property name="geometry">
-          <rect>
-           <x>470</x>
-           <y>230</y>
-           <width>21</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>+</string>
-         </property>
-        </widget>
+        </layout>
        </widget>
       </widget>
      </item>
