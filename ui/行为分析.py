@@ -695,4 +695,4 @@ class Ui_Frame(object):
         self.pushButton_6.setText(_translate("Frame", "格式检查"))
         self.pushButton_7.setText(_translate("Frame", "增加"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.widget), _translate("Frame", "ACT-R生成式"))
-import resources_rc
+import ui.resources_rc

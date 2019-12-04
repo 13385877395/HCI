@@ -488,4 +488,4 @@ class Ui_Frame(object):
         self.checkBox.setText(_translate("Frame", "初始知识"))
         self.state_add.setText(_translate("Frame", "增加"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.state), _translate("Frame", "陈述知识"))
-import resources_rc
+import ui.resources_rc

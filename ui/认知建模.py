@@ -359,4 +359,4 @@ class Ui_Frame(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.pushButton_5.setText(_translate("Frame", "保存"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Frame", "参数调整"))
-import resources_rc
+import ui.resources_rc
