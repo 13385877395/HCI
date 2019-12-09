@@ -31,7 +31,7 @@
      <item row="0" column="1">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="system">
         <attribute name="icon">
@@ -172,7 +172,7 @@ p, li { white-space: pre-wrap; }
         </attribute>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="1" column="3">
-          <widget class="QLineEdit" name="model_lineEdit_name">
+          <widget class="QLineEdit" name="model_lineEdit_default">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -280,7 +280,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="model_lineEdit_default">
+          <widget class="QLineEdit" name="model_lineEdit_name">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -654,11 +654,6 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <item>
-            <property name="text">
-             <string>知识名         知识类                     知识槽                                  ...</string>
-            </property>
-           </item>
           </widget>
          </item>
          <item row="1" column="6" rowspan="5" colspan="6">
