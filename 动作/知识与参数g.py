@@ -142,7 +142,8 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
     # 模型更改参数显示预览
     def showmodel(self):
         # 调用函数返回预览字符串
-        self.MODELSTRING = getprint2( self.modelFeatureList )
+
+        self.MODELSTRING = getprint3( self.modelFeatureList )
         # 在预览中加载字符串
         self.model_textBrowser.setText( self.MODELSTRING )
 
@@ -268,6 +269,28 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         # 获取参数
         stateName = self.state_lineEdit_name.text()
         stateClassName = self.state_comboBox_Class.currentText()
+        stateSlotName1 = self.comboBox_1.currentText()
+        stateSlotValue1 = self.lineEdit_1.text()
+        stateSlotName2 = self.comboBox_2.currentText()
+        stateSlotValue2 = self.lineEdit_2.text()
+        freeFeature = list()
+        StateFeatureState = False
+        for feature in self.stateFeatureList:
+            if stateName in feature:
+                StateFeatureState = True
+                item = self.state_all.findItems( feature[0] + '\t\t' + feature[1]+'\t\t'+feature[2]+' '+feature[3]+' '+feature[4]+' '+feature[5], Qt.MatchExactly )[0]
+                row = self.state_all.row( item )
+                self.state_all.takeItem( row )
+                self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2 )
+                freeFeature = feature
+        if StateFeatureState:
+            self.stateFeatureList.remove( freeFeature )
+        else:
+            self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2)
+        self.stateFeatureList.append( (stateName, stateClassName,stateSlotName1,stateSlotValue1,stateSlotName2,stateSlotValue2) )
+        # 调用函数返回预览字符串
+
+        # 在预览中加载字符串
 
     # 陈述知识参数右键菜单
     def rightMenuShowSTATA(self):

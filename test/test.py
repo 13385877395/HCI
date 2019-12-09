@@ -31,6 +31,14 @@ def getprint1(sysparameter):
         prints +=')'
         return prints
 
+
+def getprint3(modelFeatureList):
+    prints = ''
+    i = 0
+    while i < len( modelFeatureList ):
+        prints +=  str( modelFeatureList[i][0] ) + " " + str( modelFeatureList[i][1] ) +" "+ str( modelFeatureList[i][2] )
+        i += 1
+    return prints
 #test
 a=[('esc',.05 ), ('if','high') ]
 print(getprint1(a))
