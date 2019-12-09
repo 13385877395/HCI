@@ -36,11 +36,11 @@ a=[('esc',.05 ), ('if','high') ]
 print(getprint1(a))
 
 
-def create__file1(file_path,msg):
+def create_file1(file_path,msg):
     f=open(file_path,"w")
     f.write(msg)
     f.close
-def create__file2(file_path,msg):
+def create_file2(file_path,msg):
     f=open(file_path,"a")
     f.write(msg)
     f.close

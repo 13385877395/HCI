@@ -79,8 +79,8 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.systemFeatureList = list(self.systemFeatureDict.items())
         # 调用函数返回预览字符串
         self.SYSTEMSTRING = getprint1(self.systemFeatureList)
-        create__file1("d://test.lisp",self.SYSTEMSTRING)
-        create__file2("d://test.lisp","\n")
+        create_file1("d://test.lisp",self.SYSTEMSTRING)
+        create_file2("d://test.lisp","\n")
         #在预览中加载字符串
         self.sys_textBrowser.setText(self.SYSTEMSTRING)
 

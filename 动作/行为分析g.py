@@ -5,6 +5,7 @@ from PyQt5.QtGui import QCursor
 sys.path.append('../ui/')
 sys.path.append('../类/')
 from PyQt5.QtWidgets import QApplication, QMessageBox
+from test.test import *
 from 行为分析 import Ui_Frame
 from PyQt5 import QtWidgets
 from CProcedure import proModeling, showall
@@ -124,7 +125,10 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         if condition[0] not in self.names:
             # self.names.append(condition[0])
             condition.pop(1)
-            self.textBrowser_5.setText(self.models.makeModel(condition, result))
+            self.MODELSTRING=self.models.makeModel(condition, result)
+            self.textBrowser_5.setText(self.MODELSTRING)
+            create_file2("d://test.lisp",self.MODELSTRING)
+
         else:
             QMessageBox.information(self, "Information",
                                     self.tr("已有该函数名"))
