@@ -31,7 +31,7 @@
      <item row="0" column="1">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="system">
         <attribute name="icon">
@@ -688,6 +688,36 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>sys_lineEdit_value</tabstop>
+  <tabstop>model_lineEdit_default</tabstop>
+  <tabstop>model_lineEdit_name</tabstop>
+  <tabstop>state_lineEdit_classname</tabstop>
+  <tabstop>state_lineEdit_name</tabstop>
+  <tabstop>lineEdit_1</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>state_textBrowser</tabstop>
+  <tabstop>model_comboBox_type</tabstop>
+  <tabstop>sys_comboBox_name</tabstop>
+  <tabstop>model_add</tabstop>
+  <tabstop>sys_textBrowser</tabstop>
+  <tabstop>state_plus</tabstop>
+  <tabstop>state_all</tabstop>
+  <tabstop>sys_all</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>state_minus</tabstop>
+  <tabstop>comboBox_1</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>model_all</tabstop>
+  <tabstop>model_textBrowser</tabstop>
+  <tabstop>state_comboBox_Class</tabstop>
+  <tabstop>state_comboBox_kge</tabstop>
+  <tabstop>state_add_class</tabstop>
+  <tabstop>sys_add</tabstop>
+  <tabstop>state_all_class</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>state_add</tabstop>
+ </tabstops>
  <resources>
   <include location="../SUBCMS/resources.qrc"/>
  </resources>

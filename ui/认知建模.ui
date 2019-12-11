@@ -31,7 +31,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>1</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="widget">
         <attribute name="icon">
@@ -573,6 +573,40 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_6</tabstop>
+  <tabstop>lineEdit_11</tabstop>
+  <tabstop>lineEdit_10</tabstop>
+  <tabstop>lineEdit_13</tabstop>
+  <tabstop>lineEdit_7</tabstop>
+  <tabstop>lineEdit_12</tabstop>
+  <tabstop>textBrowser_5</tabstop>
+  <tabstop>listWidget_6</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>comboBox_21</tabstop>
+  <tabstop>comboBox_20</tabstop>
+  <tabstop>comboBox_23</tabstop>
+  <tabstop>comboBox_24</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButton_8</tabstop>
+  <tabstop>comboBox_14</tabstop>
+  <tabstop>comboBox_17</tabstop>
+  <tabstop>comboBox_18</tabstop>
+  <tabstop>comboBox_19</tabstop>
+  <tabstop>comboBox_16</tabstop>
+  <tabstop>comboBox_15</tabstop>
+  <tabstop>comboBox_22</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>textBrowser</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+ </tabstops>
  <resources>
   <include location="../SUBCMS/resources.qrc"/>
  </resources>
