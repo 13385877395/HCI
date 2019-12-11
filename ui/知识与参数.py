@@ -426,11 +426,11 @@ class Ui_Frame(object):
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
         self.retranslateUi(Frame)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(Frame)
-        Frame.setTabOrder(self.sys_lineEdit_value, self.model_lineEdit_default)
-        Frame.setTabOrder(self.model_lineEdit_default, self.model_lineEdit_name)
-        Frame.setTabOrder(self.model_lineEdit_name, self.state_lineEdit_classname)
+        Frame.setTabOrder(self.sys_lineEdit_value, self.model_lineEdit_name)
+        Frame.setTabOrder(self.model_lineEdit_name, self.model_lineEdit_default)
+        Frame.setTabOrder(self.model_lineEdit_default, self.state_lineEdit_classname)
         Frame.setTabOrder(self.state_lineEdit_classname, self.state_lineEdit_name)
         Frame.setTabOrder(self.state_lineEdit_name, self.lineEdit_1)
         Frame.setTabOrder(self.lineEdit_1, self.lineEdit_2)
@@ -508,4 +508,4 @@ class Ui_Frame(object):
         self.checkBox.setText(_translate("Frame", "初始知识"))
         self.state_add.setText(_translate("Frame", "增加"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.state), _translate("Frame", "陈述知识"))
-import ui.resources_rc
+import resources_rc

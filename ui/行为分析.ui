@@ -31,7 +31,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="icon">
@@ -1498,6 +1498,14 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <tabstops>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>lineEdit_8</tabstop>
+  <tabstop>lineEdit_9</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>lineEdit_5</tabstop>
+  <tabstop>textBrowser_4</tabstop>
+  <tabstop>listWidget_4</tabstop>
   <tabstop>lineEdit_6</tabstop>
   <tabstop>lineEdit_2</tabstop>
   <tabstop>lineEdit_11</tabstop>
@@ -1505,16 +1513,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>lineEdit_13</tabstop>
   <tabstop>lineEdit_7</tabstop>
   <tabstop>lineEdit_12</tabstop>
-  <tabstop>listWidget_6</tabstop>
-  <tabstop>textBrowser_5</tabstop>
-  <tabstop>pushButton_11</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>pushButton_8</tabstop>
-  <tabstop>comboBox_8</tabstop>
-  <tabstop>comboBox_4</tabstop>
-  <tabstop>comboBox_3</tabstop>
-  <tabstop>comboBox_9</tabstop>
+  <tabstop>textBrowser</tabstop>
+  <tabstop>listWidget_5</tabstop>
   <tabstop>comboBox_7</tabstop>
   <tabstop>comboBox_10</tabstop>
   <tabstop>comboBox_12</tabstop>
@@ -1522,9 +1522,9 @@ p, li { white-space: pre-wrap; }
   <tabstop>comboBox_6</tabstop>
   <tabstop>pushButton_9</tabstop>
   <tabstop>pushButton_3</tabstop>
-  <tabstop>listWidget_4</tabstop>
+  <tabstop>listWidget_6</tabstop>
   <tabstop>pushButton_4</tabstop>
-  <tabstop>lineEdit_3</tabstop>
+  <tabstop>pushButton_11</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>comboBox_13</tabstop>
   <tabstop>pushButton_10</tabstop>
@@ -1533,13 +1533,13 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButton_14</tabstop>
   <tabstop>pushButton_13</tabstop>
   <tabstop>comboBox_14</tabstop>
-  <tabstop>lineEdit_8</tabstop>
+  <tabstop>pushButton</tabstop>
   <tabstop>comboBox_21</tabstop>
   <tabstop>comboBox_20</tabstop>
   <tabstop>comboBox_23</tabstop>
   <tabstop>comboBox_24</tabstop>
-  <tabstop>lineEdit_9</tabstop>
-  <tabstop>lineEdit_4</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>pushButton_8</tabstop>
   <tabstop>pushButton_15</tabstop>
   <tabstop>pushButton_16</tabstop>
   <tabstop>comboBox_17</tabstop>
@@ -1548,14 +1548,14 @@ p, li { white-space: pre-wrap; }
   <tabstop>comboBox_16</tabstop>
   <tabstop>comboBox_15</tabstop>
   <tabstop>comboBox_22</tabstop>
-  <tabstop>lineEdit_5</tabstop>
-  <tabstop>textBrowser_4</tabstop>
+  <tabstop>comboBox_8</tabstop>
+  <tabstop>comboBox_4</tabstop>
   <tabstop>comboBox_11</tabstop>
-  <tabstop>textBrowser</tabstop>
-  <tabstop>listWidget_5</tabstop>
+  <tabstop>comboBox_3</tabstop>
+  <tabstop>comboBox_9</tabstop>
   <tabstop>pushButton_6</tabstop>
   <tabstop>pushButton_7</tabstop>
-  <tabstop>lineEdit</tabstop>
+  <tabstop>textBrowser_5</tabstop>
  </tabstops>
  <resources>
   <include location="../SUBCMS/resources.qrc"/>
