@@ -202,25 +202,49 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         # 获取参数
         stateClssName = self.state_lineEdit_classname.text()
         stateSlot = self.state_comboBox_kge.currentText()
+        #判断参数是否存在，如果存在则修改参数，如果不存在则插入参数
+        # StateClassFeatureState = False
+        # freeFeature = list()
+        # for feature in self.stateCalssFeatureList:
+        #     if stateClssName in feature:
+        #         StateClassFeatureState = True
+        #         item = self.state_all_class.findItems( feature[0] + '\t\t' + feature[1], Qt.MatchExactly )[0]
+        #         row = self.state_all_class.row( item )
+        #         self.state_all_class.takeItem( row )
+        #         self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
+        #         freeFeature = feature
+        # if StateClassFeatureState:
+        #     self.stateCalssFeatureList.remove(freeFeature)
+        # else:
+        #     self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
+        # self.stateCalssFeatureList.append((stateClssName,stateSlot))
+
         StateClassFeatureState = False
-        # 判断参数是否存在，如果存在则修改参数，如果不存在则插入参数
         freeFeature = list()
         for feature in self.stateCalssFeatureList:
             if stateClssName in feature:
                 StateClassFeatureState = True
-                item = self.state_all_class.findItems( feature[0] + '\t\t' + feature[1], Qt.MatchExactly )[0]
+                itemStr = feature[0] + '\t\t' + feature[1]
+                if len(feature)>2:
+                    for i in feature[2:]:
+                        itemStr+=' '+ i
+                item = self.state_all_class.findItems( itemStr, Qt.MatchExactly )[0]
                 row = self.state_all_class.row( item )
                 self.state_all_class.takeItem( row )
-                self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
+                self.state_all_class.addItem( itemStr + ' ' + stateSlot )
                 freeFeature = feature
         if StateClassFeatureState:
-            self.stateCalssFeatureList.remove(freeFeature)
+            self.stateCalssFeatureList.remove( freeFeature )
+            freeFeature.append( stateSlot )
+            self.stateCalssFeatureList.append( freeFeature )
         else:
-            self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
-        self.stateCalssFeatureList.append((stateClssName,stateSlot))
+            self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot )
+            self.stateCalssFeatureList.append( [stateClssName, stateSlot] )
         # 调用函数返回预览字符串
+        self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
 
         # 在预览中加载字符串
+        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
 
         # 更改陈述知识内知识类
         self.state_comboBox_Class.clear()
@@ -279,7 +303,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         freeFeature = list()
         StateFeatureState = False
         for feature in self.stateFeatureList:
-            if stateName in feature:
+            if stateName in feature[0]:
                 StateFeatureState = True
                 item = self.state_all.findItems( feature[0] + '\t\t' + feature[1]+'\t\t'+feature[2]+' '+feature[3]+' '+feature[4]+' '+feature[5], Qt.MatchExactly )[0]
                 row = self.state_all.row( item )
@@ -291,9 +315,10 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         else:
             self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2)
         self.stateFeatureList.append( (stateName, stateClassName,stateSlotName1,stateSlotValue1,stateSlotName2,stateSlotValue2) )
-        # 调用函数返回预览字符串
+        self.SYSTEMFEATURE = getprint5( self.stateFeatureList )
 
         # 在预览中加载字符串
+        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE +self.SYSTEMFEATURE)
 
     # 陈述知识参数右键菜单
     def rightMenuShowSTATA(self):

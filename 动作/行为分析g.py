@@ -38,6 +38,24 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.listWidget_5.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
 
+        # 增
+        self.pushButton.clicked.connect(
+            lambda: self.add( self.verticalLayout, self.verticalLayout_2, self.verticalLayout_3 ) )
+        self.pushButton_12.clicked.connect(
+            lambda: self.add( self.verticalLayout_4, self.verticalLayout_5, self.verticalLayout_6 ) )
+        self.pushButton_14.clicked.connect(
+            lambda: self.add( self.verticalLayout_9, self.verticalLayout_10, self.verticalLayout_11 ) )
+        self.pushButton_15.clicked.connect(
+            lambda: self.add( self.verticalLayout_12, self.verticalLayout_13, self.verticalLayout_14 ) )
+        # 删
+        self.pushButton_8.clicked.connect(
+            lambda: self.delete( self.verticalLayout, self.verticalLayout_2, self.verticalLayout_3 ) )
+        self.pushButton_11.clicked.connect(
+            lambda: self.delete( self.verticalLayout_4, self.verticalLayout_5, self.verticalLayout_6 ) )
+        self.pushButton_13.clicked.connect(
+            lambda: self.delete( self.verticalLayout_9, self.verticalLayout_10, self.verticalLayout_11 ) )
+        self.pushButton_16.clicked.connect(
+            lambda: self.delete( self.verticalLayout_12, self.verticalLayout_13, self.verticalLayout_14 ) )
 
     # 获取手工建模的条件和结果
     def get1(self):
@@ -155,6 +173,24 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             QMessageBox.information(self, "Information",
                                     self.tr("添加未成功"))
 
+    def delmodel(self, name):
+        num = self.models.name.index( name )
+        self.models.time.pop( num )
+        self.models.name.pop( num )
+        self.models.condition.pop( num )
+        self.models.result.pop( num )
+        self.models.model.pop( num )
+        self.models.len -= 1
+
+    def add(self, verticalLayout1, verticalLayout2, verticalLayout3):
+        comboBox1 = QtWidgets.QComboBox( self.groupBox )
+        comboBox2 = QtWidgets.QComboBox( self.groupBox )
+        lineEdit = QtWidgets.QLineEdit( self.groupBox )
+        # 增加控件的名称
+        # self.comboBox_13.setObjectName("comboBox_13")
+        verticalLayout1.addWidget( comboBox1 )
+        verticalLayout2.addWidget( comboBox2 )
+        verticalLayout3.addWidget( lineEdit )
     def QLWclicked1(self, item):
         # print(item.text())
         try:

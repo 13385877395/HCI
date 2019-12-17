@@ -31,7 +31,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="icon">
@@ -1447,11 +1447,11 @@ p, li { white-space: pre-wrap; }
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QTextBrowser" name="textBrowser"/>
-           </item>
            <item row="1" column="1">
             <widget class="QListWidget" name="listWidget_5"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QTextEdit" name="textEdit"/>
            </item>
           </layout>
          </item>
@@ -1513,7 +1513,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>lineEdit_13</tabstop>
   <tabstop>lineEdit_7</tabstop>
   <tabstop>lineEdit_12</tabstop>
-  <tabstop>textBrowser</tabstop>
   <tabstop>listWidget_5</tabstop>
   <tabstop>comboBox_7</tabstop>
   <tabstop>comboBox_10</tabstop>

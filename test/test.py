@@ -36,9 +36,32 @@ def getprint3(modelFeatureList):
     prints = ''
     i = 0
     while i < len( modelFeatureList ):
-        prints +=  str( modelFeatureList[i][0] ) + " " + str( modelFeatureList[i][1] ) +" "+ str( modelFeatureList[i][2] )
+        prints +=  str( modelFeatureList[i][0] ) + " " + str( modelFeatureList[i][1] ) +" "+ str( modelFeatureList[i][2] )+"\n"
         i += 1
     return prints
+#陈述知识类传参
+def getprint4(stateCalssFeatureList):
+    prints = ''
+    for feature in stateCalssFeatureList:
+        str = '(chunk - type'
+        for i in feature:
+            str +=' '+ i
+        str+=')'
+        prints+=str+'\n'
+    return prints
+#陈述知识传参
+def getprint5(stateFeatureList):
+    prints = '(add-dm\n'
+    for feature in stateFeatureList:
+        str = ' ('
+        str +=feature[0]+' ISA'
+        for i in feature[1:]:
+            str +=' '+ i
+        str+=')'
+        prints+=str+'\n'
+    prints +=')'
+    return prints
+
 #test
 a=[('esc',.05 ), ('if','high') ]
 print(getprint1(a))
