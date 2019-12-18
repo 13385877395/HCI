@@ -23,8 +23,6 @@ class conForm(QtWidgets.QWidget, Ui_Frame):
         super(conForm, self).__init__()
         self.setupUi(self)
         # 模型预览版快
-        self.getlisp()
-        self.textEdit.setText(self.LISP) # lisp文件内容
         self.pushButton_6.clicked.connect(self.check) # 检查lisp文件
 
         # 模型运行板块
@@ -32,23 +30,13 @@ class conForm(QtWidgets.QWidget, Ui_Frame):
         self.pushButton_2.clicked.connect(self.pause) # 暂停model
         self.pushButton_3.clicked.connect(self.clear) # 清除运行结果
         self.pushButton_4.clicked.connect(self.restart) # 重新加载文件
-    #获取lisp文件内容
-    def getlisp(self):
-        #获取lisp文件名字
 
-        #获取文件内容
-        self.LISP=""
-        with open( r"C:\Users\ASUS\Desktop\HCI\ACT-R\tutorial\unit1\count.lisp" ) as lines:
-            for line in lines:
-                self.LISP +=line
     # 检测模型
     def check(self):
         pass
     def run(self):
-        os.popen(r'start /min C:\Users\ASUS\Desktop\HCI\ACT-R\apps\act-r.exe  -n -l "C:\Users\ASUS\Desktop\HCI\ACT-R\myset-logical .lisp" -e "(load-patch-files)" -e "(init-des)" -e "(echo-act-r-output)" -e "(load-user-files)' )
-        import ACT.actr as actr
-        # 获取lisp文件地址
 
+        # 获取lisp文件地址
         # 加载运行模型并且保存运行结果
         savedStdout = sys.stdout
         read = __Autonomy__()

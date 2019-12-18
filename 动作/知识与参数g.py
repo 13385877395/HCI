@@ -15,6 +15,10 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
     def __init__(self):
         super(knowForm, self).__init__()
         self.setupUi(self)
+        # 预览参数
+        self.SYSTEMSTRING=""
+        self.SYSTEMCLASSFEATURE=""
+        self.SYSTEMFEATURE=""
         # 系统参数
         self.systemFeatureDict = dict()
         self.systemFeatureList = list()
@@ -84,6 +88,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         #在预览中加载字符串
         self.sys_textBrowser.setText(self.SYSTEMSTRING)
 
+
     # 系统参数右键菜单
     def rightMenuShowSYS(self):
         try:
@@ -117,6 +122,10 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.systemFeatureDict = dict()
         self.systemFeatureList = list()
         self.sys_all.addItem( '参数\t\t取值\t\t缺省值' )
+        # 调用函数返回预览字符串
+        self.SYSTEMSTRING = getprint1( self.systemFeatureList )
+        # 在预览中加载字符串
+        self.sys_textBrowser.setText( self.SYSTEMSTRING )
 
     # 模型参数
     def buttonModelAdd(self):
@@ -145,7 +154,6 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
     # 模型更改参数显示预览
     def showmodel(self):
         # 调用函数返回预览字符串
-
         self.MODELSTRING = getprint3( self.modelFeatureList )
         # 在预览中加载字符串
         self.model_textBrowser.setText( self.MODELSTRING )
@@ -203,21 +211,6 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         stateClssName = self.state_lineEdit_classname.text()
         stateSlot = self.state_comboBox_kge.currentText()
         #判断参数是否存在，如果存在则修改参数，如果不存在则插入参数
-        # StateClassFeatureState = False
-        # freeFeature = list()
-        # for feature in self.stateCalssFeatureList:
-        #     if stateClssName in feature:
-        #         StateClassFeatureState = True
-        #         item = self.state_all_class.findItems( feature[0] + '\t\t' + feature[1], Qt.MatchExactly )[0]
-        #         row = self.state_all_class.row( item )
-        #         self.state_all_class.takeItem( row )
-        #         self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
-        #         freeFeature = feature
-        # if StateClassFeatureState:
-        #     self.stateCalssFeatureList.remove(freeFeature)
-        # else:
-        #     self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot)
-        # self.stateCalssFeatureList.append((stateClssName,stateSlot))
 
         StateClassFeatureState = False
         freeFeature = list()
@@ -275,10 +268,17 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
             if stateFeatureState:
                 self.stateCalssFeatureList.remove( freeFeature )
                 self.state_all_class.takeItem(row)
-        # 更改陈述知识内知识类
-        self.state_comboBox_Class.clear()
-        for feature in self.stateCalssFeatureList:
-            self.state_comboBox_Class.addItem( feature[0] )
+                # 调用函数返回预览字符串
+                self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
+
+                # 在预览中加载字符串
+                self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
+
+                # 更改陈述知识内知识类
+                self.state_comboBox_Class.clear()
+                for feature in self.stateCalssFeatureList:
+                    self.state_comboBox_Class.addItem( feature[0] )
+
 
 
     # 陈述知识类参数右键清除
@@ -286,6 +286,11 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.state_all_class.clear()
         self.stateCalssFeatureList = list()
         self.state_all_class.addItem('知识名\t\t知识槽\t\t...')
+        # 调用函数返回预览字符串
+        self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
+        # 在预览中加载字符串
+        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
+
         # 更改陈述知识内知识类
         self.state_comboBox_Class.clear()
         for feature in self.stateCalssFeatureList:
@@ -315,11 +320,11 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         else:
             self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2)
         self.stateFeatureList.append( (stateName, stateClassName,stateSlotName1,stateSlotValue1,stateSlotName2,stateSlotValue2) )
+        # 调用函数返回预览字符串
         self.SYSTEMFEATURE = getprint5( self.stateFeatureList )
 
         # 在预览中加载字符串
         self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE +self.SYSTEMFEATURE)
-
     # 陈述知识参数右键菜单
     def rightMenuShowSTATA(self):
         self.state_contextMenu = QMenu()
@@ -344,12 +349,22 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
             if stateFeatureState:
                 self.stateFeatureList.remove( freeFeature )
                 self.state_all.takeItem( row )
+                # 调用函数返回预览字符串
+                self.SYSTEMFEATURE = getprint5( self.stateFeatureList )
+                # 在预览中加载字符串
+                self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE + self.SYSTEMFEATURE )
+
 
     # 陈述知识参数右键清除
     def onActionClearSTATE(self):
         self.state_all.clear()
         self.stateFeatureList = list()
         self.state_all.addItem('知识名\t\t知识类\t\t知识槽\t\t...')
+        # 调用函数返回预览字符串
+        self.SYSTEMFEATURE = getprint5( self.stateFeatureList )
+        # 在预览中加载字符串
+        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE + self.SYSTEMFEATURE )
+
 
     # 陈述知识槽增减
     def buttonStatePlus(self):
@@ -357,6 +372,14 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
 
     def buttonStateMinus(self):
         pass
+
+    #每个操作后用于保存数据
+    # def saveData(self):
+    #     #获取model名称
+    #     fileName = 'kown.lisp'
+    #     with open( fileName, "w", encoding='utf-8' ) as f:
+    #         str = '''(clear-all)\n\n(define-model count\n'''+self.SYSTEMSTRING+"\n"+self.SYSTEMCLASSFEATURE+self.SYSTEMFEATURE;
+    #         f.write( str )
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
