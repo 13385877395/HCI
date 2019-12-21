@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication,QPushButton,QLineEdit,QComboBox,QLabel
 
 sys.path.append('../ui/')
 
@@ -57,9 +57,60 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.state_all.customContextMenuRequested.connect( self.rightMenuShowSTATA )
 
         # 陈述知识槽增减
-        self.stateSolt = 2
-        self.state_plus.clicked.connect(self.buttonStatePlus)
-        self.state_minus.clicked.connect(self.buttonStateMinus)
+        self.WIDGETSLIST = []
+        self.count = 0
+
+        plus = QPushButton( '+' );
+        plus.setMaximumWidth( 30 )
+        minus = QPushButton( '-' );
+        minus.setMaximumWidth( 30 )
+        solt = QLabel('槽')
+        box = QComboBox();
+        box.setMaximumWidth( 100 )
+        value = QLabel('值')
+        Edit = QLineEdit();
+        Edit.setMaximumWidth( 100 )
+        plus.clicked.connect( self.buttonStatePlus )
+        minus.clicked.connect( self.buttonStateMinus )
+        self.WIDGETSLIST.append( plus )
+        self.WIDGETSLIST.append( minus )
+        self.WIDGETSLIST.append( solt )
+        self.WIDGETSLIST.append( box )
+        self.WIDGETSLIST.append( value )
+        self.WIDGETSLIST.append( Edit )
+        self.gridLayout_6.addWidget( plus, self.count, 0 )
+        self.gridLayout_6.addWidget( minus, self.count, 1 )
+        self.gridLayout_6.addWidget( solt, self.count, 2 )
+        self.gridLayout_6.addWidget( box, self.count, 3 )
+        self.gridLayout_6.addWidget( value, self.count, 4 )
+        self.gridLayout_6.addWidget( Edit, self.count, 5 )
+        self.count = 1
+        plus = QPushButton( '+' )
+        plus.setMaximumWidth( 30 )
+        minus = QPushButton( '-' )
+        minus.setMaximumWidth( 30 )
+        solt = QLabel( '槽' )
+        box = QComboBox()
+        box.setMaximumWidth( 100 )
+        value = QLabel( '值' )
+        Edit = QLineEdit()
+        Edit.setMaximumWidth( 100 )
+        plus.clicked.connect( self.buttonStatePlus )
+        minus.clicked.connect( self.buttonStateMinus )
+        self.WIDGETSLIST.append( plus )
+        self.WIDGETSLIST.append( minus )
+        self.WIDGETSLIST.append( solt )
+        self.WIDGETSLIST.append( box )
+        self.WIDGETSLIST.append( value )
+        self.WIDGETSLIST.append( Edit )
+        self.gridLayout_6.addWidget( plus, self.count, 0 )
+        self.gridLayout_6.addWidget( minus, self.count, 1 )
+        self.gridLayout_6.addWidget( solt, self.count, 2 )
+        self.gridLayout_6.addWidget( box, self.count, 3 )
+        self.gridLayout_6.addWidget( value, self.count, 4 )
+        self.gridLayout_6.addWidget( Edit, self.count, 5 )
+        self.count = 2
+
 
     # 系统参数
     def butonSysAdd(self):
@@ -158,19 +209,16 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         # 在预览中加载字符串
         self.model_textBrowser.setText( self.MODELSTRING )
 
-        # 更改陈述知识内知识槽
+        # 更改陈述知识类知识槽
         self.state_comboBox_kge.clear()
         for feature in self.modelFeatureList:
             self.state_comboBox_kge.addItem( feature[0] )
-        # 更改陈述知识内槽
-        self.comboBox_1.clear()
-        for feature in self.modelFeatureList:
-            self.comboBox_1.addItem( feature[0] )
-        self.comboBox_2.clear()
-        for feature in self.modelFeatureList:
-            self.comboBox_2.addItem( feature[0] )
-        # # 通过计数方式更改
-
+        # 更改陈述知识槽
+        for  i in range(self.count):
+            box = self.WIDGETSLIST[i*6+3]
+            box.clear()
+            for feature in self.modelFeatureList:
+                box.addItem( feature[0] )
         pass
     # 模型参数右键菜单
     def rightMenuShowMODEL(self):
@@ -301,30 +349,53 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         # 获取参数
         stateName = self.state_lineEdit_name.text()
         stateClassName = self.state_comboBox_Class.currentText()
-        stateSlotName1 = self.comboBox_1.currentText()
-        stateSlotValue1 = self.lineEdit_1.text()
-        stateSlotName2 = self.comboBox_2.currentText()
-        stateSlotValue2 = self.lineEdit_2.text()
         freeFeature = list()
         StateFeatureState = False
         for feature in self.stateFeatureList:
             if stateName in feature[0]:
                 StateFeatureState = True
-                item = self.state_all.findItems( feature[0] + '\t\t' + feature[1]+'\t\t'+feature[2]+' '+feature[3]+' '+feature[4]+' '+feature[5], Qt.MatchExactly )[0]
+                itemStr = feature[0] + '\t' + feature[1] + '\t'
+                for featureItem in feature[2:]:
+                    itemStr = itemStr + featureItem + ' '
+                item = self.state_all.findItems( itemStr, Qt.MatchExactly )[0]
                 row = self.state_all.row( item )
                 self.state_all.takeItem( row )
-                self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2 )
+                itemStr = stateName + '\t' + stateClassName + '\t'
+                for i in range( self.count ):
+                    box = self.WIDGETSLIST[i * 6 + 3]
+                    boxText = box.currentText()
+                    Edit = self.WIDGETSLIST[i * 6 + 5]
+                    EditText = Edit.text()
+                    itemStr = itemStr + boxText + ' ' + EditText + ' '
+                self.state_all.addItem( itemStr )
                 freeFeature = feature
         if StateFeatureState:
             self.stateFeatureList.remove( freeFeature )
         else:
-            self.state_all.addItem( stateName + '\t\t' + stateClassName+'\t\t'+stateSlotName1+' '+stateSlotValue1+' '+stateSlotName2+' '+stateSlotValue2)
-        self.stateFeatureList.append( (stateName, stateClassName,stateSlotName1,stateSlotValue1,stateSlotName2,stateSlotValue2) )
+            itemStr = stateName + '\t' + stateClassName + '\t'
+            for i in range( self.count ):
+                boxText = self.WIDGETSLIST[i * 6 + 3].currentText()
+                EditText = self.WIDGETSLIST[i * 6 + 5].text()
+                itemStr = itemStr + boxText + ' ' + EditText + ' '
+            print(itemStr)
+            self.state_all.addItem( itemStr )
+        List = list()
+        List.append( stateName )
+        List.append( stateClassName )
+        for i in range( self.count ):
+            box = self.WIDGETSLIST[i * 6 + 3]
+            boxText = box.currentText()
+            Edit =self.WIDGETSLIST[i * 6 + 5]
+            EditText = Edit.text()
+            List.append( boxText )
+            List.append( EditText )
+        self.stateFeatureList.append( List )
         # 调用函数返回预览字符串
         self.SYSTEMFEATURE = getprint5( self.stateFeatureList )
 
         # 在预览中加载字符串
-        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE +self.SYSTEMFEATURE)
+        self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE + self.SYSTEMFEATURE )
+        pass
     # 陈述知识参数右键菜单
     def rightMenuShowSTATA(self):
         self.state_contextMenu = QMenu()
@@ -368,10 +439,55 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
 
     # 陈述知识槽增减
     def buttonStatePlus(self):
-        pass
+        plus = QPushButton( '+' );
+        plus.setMaximumWidth( 30 )
+        minus = QPushButton( '-' );
+        minus.setMaximumWidth( 30 )
+        solt = QLabel( '槽' )
+        box = QComboBox()
+        box.setMaximumWidth( 100 )
+        value = QLabel( '值' )
+        Edit = QLineEdit()
+        Edit.setMaximumWidth( 100 )
+        plus.clicked.connect( self.buttonStatePlus )
+        minus.clicked.connect( self.buttonStateMinus )
+        for feature in self.modelFeatureList:
+            box.addItem( feature[0] )
+        self.WIDGETSLIST.append( plus )
+        self.WIDGETSLIST.append( minus )
+        self.WIDGETSLIST.append( solt )
+        self.WIDGETSLIST.append( box )
+        self.WIDGETSLIST.append( value )
+        self.WIDGETSLIST.append( Edit )
+        self.gridLayout_6.addWidget( plus, self.count, 0 )
+        self.gridLayout_6.addWidget( minus, self.count, 1 )
+        self.gridLayout_6.addWidget( solt, self.count, 2 )
+        self.gridLayout_6.addWidget( box, self.count, 3 )
+        self.gridLayout_6.addWidget( value, self.count, 4 )
+        self.gridLayout_6.addWidget( Edit, self.count, 5 )
+        self.count = self.count+1
 
     def buttonStateMinus(self):
-        pass
+        if(self.count>2):
+            plus = self.WIDGETSLIST[self.count * 6 - 6]
+            minus = self.WIDGETSLIST[self.count * 6 - 5]
+            solt = self.WIDGETSLIST[self.count * 6 - 4]
+            box = self.WIDGETSLIST[self.count * 6 - 3]
+            value = self.WIDGETSLIST[self.count * 6 - 2]
+            Edit = self.WIDGETSLIST[self.count * 4 - 1]
+            plus.deleteLater()
+            minus.deleteLater()
+            solt.deleteLater()
+            box.deleteLater()
+            value.deleteLater()
+            Edit.deleteLater()
+            self.WIDGETSLIST.remove(plus)
+            self.WIDGETSLIST.remove( minus )
+            self.WIDGETSLIST.remove( solt )
+            self.WIDGETSLIST.remove( box )
+            self.WIDGETSLIST.remove( value )
+            self.WIDGETSLIST.remove( Edit )
+            self.count = self.count - 1;
 
     #每个操作后用于保存数据
     # def saveData(self):
