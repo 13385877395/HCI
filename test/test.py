@@ -13,11 +13,6 @@ def getprint2(knowstatement):
     prints2 += ')'
     return prints2
 
-#test
-know=[('b','count-order','first 1 second 2'),('c','count-order','first 2 second 3'),('d','count-order','first 3 second 4')]
-print(getprint2(know))
-
-
 #返回系统参数字符串
 #sysparameter为系统参数
 #传一个列表，列表元素为两个元素的元组
@@ -62,9 +57,6 @@ def getprint5(stateFeatureList):
     prints +=')'
     return prints
 
-#test
-a=[('esc',.05 ), ('if','high') ]
-print(getprint1(a))
 
 
 def create_file1(file_path,msg):

@@ -45,10 +45,14 @@ class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.gridLayout.addWidget(self.child3)  # 添加子窗口
         self.child3.show()
-        #先判断lisp文件是否存在，再进行输出
-        self.child3.textEdit.setText('''(clear-all)\n\n(define-model count\n''' + self.child1.SYSTEMSTRING + "\n" + self.child1.SYSTEMCLASSFEATURE + self.child1.SYSTEMFEATURE)
-
-
+        # 先判断lisp文件是否存在，再进行输出
+        self.child3.textEdit.setText('''(clear-all)\n\n(define-model count\n''' + self.child1.SYSTEMSTRING + "\n\n" + self.child1.SYSTEMCLASSFEATURE + self.child1.SYSTEMFEATURE)
+        # 参数传递
+        self.child3.systemFeatureList = self.child1.systemFeatureList
+        self.child3.modelFeatureList = self.child1.modelFeatureList
+        self.child3.stateClassFeatureList = self.child1.stateClassFeatureList
+        self.child3.stateClassFeatureList = self.child1.stateClassFeatureList
+        self.child3.stateFeatureList = self.child1.stateFeatureList
 
 
 

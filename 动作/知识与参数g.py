@@ -39,7 +39,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.model_all.customContextMenuRequested.connect( self.rightMenuShowMODEL )
 
         # 陈述知识类参数
-        self.stateCalssFeatureList = list()
+        self.stateClassFeatureList = list()
         self.state_all_class.addItem('知识名\t\t知识槽\t\t...')
         self.state_add_class.clicked.connect(self.buttonStateClassAdd)
 
@@ -49,7 +49,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
 
         #陈述知识参数
         self.stateFeatureList = list()
-        self.state_all.addItem('知识名\t\t知识类\t\t知识槽\t\t...')
+        self.state_all.addItem('知识名\t知识类\t\t知识槽\t...')
         self.state_add.clicked.connect(self.buttonStateAdd)
 
         # 陈述知识参数右键菜单
@@ -262,10 +262,10 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
 
         StateClassFeatureState = False
         freeFeature = list()
-        for feature in self.stateCalssFeatureList:
+        for feature in self.stateClassFeatureList:
             if stateClssName in feature:
                 StateClassFeatureState = True
-                itemStr = feature[0] + '\t\t' + feature[1]
+                itemStr = feature[0] + '\t' + feature[1]
                 if len(feature)>2:
                     for i in feature[2:]:
                         itemStr+=' '+ i
@@ -275,21 +275,21 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
                 self.state_all_class.addItem( itemStr + ' ' + stateSlot )
                 freeFeature = feature
         if StateClassFeatureState:
-            self.stateCalssFeatureList.remove( freeFeature )
+            self.stateClassFeatureList.remove( freeFeature )
             freeFeature.append( stateSlot )
-            self.stateCalssFeatureList.append( freeFeature )
+            self.stateClassFeatureList.append( freeFeature )
         else:
-            self.state_all_class.addItem( stateClssName + '\t\t' + stateSlot )
-            self.stateCalssFeatureList.append( [stateClssName, stateSlot] )
+            self.state_all_class.addItem( stateClssName + '\t' + stateSlot )
+            self.stateClassFeatureList.append( [stateClssName, stateSlot] )
         # 调用函数返回预览字符串
-        self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
+        self.SYSTEMCLASSFEATURE = getprint4( self.stateClassFeatureList )
 
         # 在预览中加载字符串
         self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
 
         # 更改陈述知识内知识类
         self.state_comboBox_Class.clear()
-        for feature in self.stateCalssFeatureList:
+        for feature in self.stateClassFeatureList:
             self.state_comboBox_Class.addItem(feature[0])
 
     # 陈述知识类参数右键菜单
@@ -309,22 +309,22 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
             # 删除
             stateFeatureState = False
             freeFeature = None
-            for feature in self.stateCalssFeatureList:
+            for feature in self.stateClassFeatureList:
                 if self.state_all_class.item( row ).text().split()[0] in feature:
                     stateFeatureState = True
                     freeFeature = feature
             if stateFeatureState:
-                self.stateCalssFeatureList.remove( freeFeature )
+                self.stateClassFeatureList.remove( freeFeature )
                 self.state_all_class.takeItem(row)
                 # 调用函数返回预览字符串
-                self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
+                self.SYSTEMCLASSFEATURE = getprint4( self.stateClassFeatureList )
 
                 # 在预览中加载字符串
                 self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
 
                 # 更改陈述知识内知识类
                 self.state_comboBox_Class.clear()
-                for feature in self.stateCalssFeatureList:
+                for feature in self.stateClassFeatureList:
                     self.state_comboBox_Class.addItem( feature[0] )
 
 
@@ -332,16 +332,16 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
     # 陈述知识类参数右键清除
     def onActionClearSTATECLASS(self):
         self.state_all_class.clear()
-        self.stateCalssFeatureList = list()
+        self.stateClassFeatureList = list()
         self.state_all_class.addItem('知识名\t\t知识槽\t\t...')
         # 调用函数返回预览字符串
-        self.SYSTEMCLASSFEATURE = getprint4( self.stateCalssFeatureList )
+        self.SYSTEMCLASSFEATURE = getprint4( self.stateClassFeatureList )
         # 在预览中加载字符串
         self.state_textBrowser.setText( self.SYSTEMCLASSFEATURE )
 
         # 更改陈述知识内知识类
         self.state_comboBox_Class.clear()
-        for feature in self.stateCalssFeatureList:
+        for feature in self.stateClassFeatureList:
             self.state_comboBox_Class.addItem( feature[0] )
 
     # 陈述知识参数
@@ -377,7 +377,6 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
                 boxText = self.WIDGETSLIST[i * 6 + 3].currentText()
                 EditText = self.WIDGETSLIST[i * 6 + 5].text()
                 itemStr = itemStr + boxText + ' ' + EditText + ' '
-            print(itemStr)
             self.state_all.addItem( itemStr )
         List = list()
         List.append( stateName )
