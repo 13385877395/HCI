@@ -28,7 +28,6 @@ class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
     def child1Show(self):
         self.child2.close()
         self.child3.close()
-
         self.gridLayout.addWidget(self.child1)  # 添加子窗口
         self.child1.show()
 
