@@ -4,7 +4,7 @@ from PyQt5.QtGui import QCursor
 
 sys.path.append('../ui/')
 sys.path.append('../类/')
-from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMessageBox, QPushButton, QLineEdit, QComboBox, QLabel
 from test.test import *
 from 行为分析 import Ui_Frame
 from PyQt5 import QtWidgets
@@ -38,24 +38,25 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.listWidget_5.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
 
+        # 手工建模条件
+        self.mmconditon = []
+        self.mmcountc = 1
+        # 手工建模结果
+        self.mmresult = []
+        self.mmcountr = 1
+        # 视频分析条件
+        self.vaconditon = []
+        self.vacountc = 1
+        # 视频分析结果
+        self.varesult = []
+        self.vacountr = 1
+        # 条件结果初始化
+        self.inif(self.gridLayout_18, self.mmconditon, 1)
+        # self.inif(self.gridLayout_19, self.mmresult, self.mmcountr, '结果')
         # 增
-        self.pushButton.clicked.connect(
-            lambda: self.add( self.verticalLayout, self.verticalLayout_2, self.verticalLayout_3 ) )
-        self.pushButton_12.clicked.connect(
-            lambda: self.add( self.verticalLayout_4, self.verticalLayout_5, self.verticalLayout_6 ) )
-        self.pushButton_14.clicked.connect(
-            lambda: self.add( self.verticalLayout_9, self.verticalLayout_10, self.verticalLayout_11 ) )
-        self.pushButton_15.clicked.connect(
-            lambda: self.add( self.verticalLayout_12, self.verticalLayout_13, self.verticalLayout_14 ) )
+
         # 删
-        self.pushButton_8.clicked.connect(
-            lambda: self.delete( self.verticalLayout, self.verticalLayout_2, self.verticalLayout_3 ) )
-        self.pushButton_11.clicked.connect(
-            lambda: self.delete( self.verticalLayout_4, self.verticalLayout_5, self.verticalLayout_6 ) )
-        self.pushButton_13.clicked.connect(
-            lambda: self.delete( self.verticalLayout_9, self.verticalLayout_10, self.verticalLayout_11 ) )
-        self.pushButton_16.clicked.connect(
-            lambda: self.delete( self.verticalLayout_12, self.verticalLayout_13, self.verticalLayout_14 ) )
+
 
     # 获取手工建模的条件和结果
     def get1(self):
@@ -174,23 +175,27 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
                                     self.tr("添加未成功"))
 
     def delmodel(self, name):
-        num = self.models.name.index( name )
-        self.models.time.pop( num )
-        self.models.name.pop( num )
-        self.models.condition.pop( num )
-        self.models.result.pop( num )
-        self.models.model.pop( num )
+        num = self.models.name.index(name)
+        self.models.time.pop(num)
+        self.models.name.pop(num)
+        self.models.condition.pop(num)
+        self.models.result.pop(num)
+        self.models.model.pop(num)
         self.models.len -= 1
 
-    def add(self, verticalLayout1, verticalLayout2, verticalLayout3):
-        comboBox1 = QtWidgets.QComboBox( self.groupBox )
-        comboBox2 = QtWidgets.QComboBox( self.groupBox )
-        lineEdit = QtWidgets.QLineEdit( self.groupBox )
-        # 增加控件的名称
-        # self.comboBox_13.setObjectName("comboBox_13")
-        verticalLayout1.addWidget( comboBox1 )
-        verticalLayout2.addWidget( comboBox2 )
-        verticalLayout3.addWidget( lineEdit )
+    # def add(self, verticalLayout1, verticalLayout2, verticalLayout3):
+    #     comboBox1 = QtWidgets.QComboBox(self.groupBox)
+    #     comboBox2 = QtWidgets.QComboBox(self.groupBox)
+    #     lineEdit = QtWidgets.QLineEdit(self.groupBox)
+    #     # 增加控件的名称
+    #     # self.comboBox_13.setObjectName("comboBox_13")
+    #     verticalLayout1.addWidget(comboBox1)
+    #     verticalLayout2.addWidget(comboBox2)
+    #     verticalLayout3.addWidget(lineEdit)
+    #
+    # def delete(self, verticalLayout1, verticalLayout2, verticalLayout3):
+    #     pass
+
     def QLWclicked1(self, item):
         # print(item.text())
         try:
@@ -245,7 +250,131 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.models.model.pop(num)
         self.models.len -= 1
 
+    # 条件结果初始化
+    def inif(self, gridLayout, list, num):
+        if num == 1 or num == 3:
+            Lab = QLabel('条件')
+        elif num == 2 or num == 4:
+            Lab = QLabel('结果')
+        box1 = QComboBox()
+        box1.setMaximumWidth(100)
+        box2 = QComboBox()
+        box2.setMaximumWidth(100)
+        Edit = QLineEdit()
+        Edit.setMaximumWidth(100)
+        gridLayout.addWidget(Lab, 0, 0)
+        gridLayout.addWidget(box1, 0, 3)
+        gridLayout.addWidget(box2, 0, 4)
+        gridLayout.addWidget(Edit, 0, 5)
+        self.buttonStatePlus(gridLayout, list, num)
 
+    # 加号
+    def buttonStatePlus(self, gridLayout, list, num):
+        plus = QPushButton('+')
+        plus.setMaximumWidth(30)
+        minus = QPushButton('-')
+        minus.setMaximumWidth(30)
+        box1 = QComboBox()
+        box1.setMaximumWidth(100)
+        box2 = QComboBox()
+        box2.setMaximumWidth(100)
+        box3 = QComboBox()
+        box3.setMaximumWidth(100)
+        Edit = QLineEdit()
+        Edit.setMaximumWidth(100)
+        list.append(plus)
+        list.append(minus)
+        list.append(box1)
+        list.append(box2)
+        list.append(box3)
+        list.append(Edit)
+        if num == 1:
+            gridLayout.addWidget(plus, self.mmcountc, 0)
+            gridLayout.addWidget(minus, self.mmcountc, 1)
+            gridLayout.addWidget(box1, self.mmcountc, 2)
+            gridLayout.addWidget(box2, self.mmcountc, 3)
+            gridLayout.addWidget(box3, self.mmcountc, 4)
+            gridLayout.addWidget(Edit, self.mmcountc, 5)
+            plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 1))
+            count = self.mmcountc
+            self.mmcountc = self.mmcountc + 1
+
+            minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 1))
+
+        elif num == 2:
+            gridLayout.addWidget(plus, self.mmcountr, 0)
+            gridLayout.addWidget(minus, self.mmcountr, 1)
+            gridLayout.addWidget(box1, self.mmcountr, 2)
+            gridLayout.addWidget(box2, self.mmcountr, 3)
+            gridLayout.addWidget(box3, self.mmcountr, 4)
+            gridLayout.addWidget(Edit, self.mmcountr, 5)
+            plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 2))
+            self.mmcountr = self.mmcountr + 1
+            count = self.mmcountr
+            minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 2))
+
+        elif num == 3:
+            gridLayout.addWidget(plus, self.vacountc, 0)
+            gridLayout.addWidget(minus, self.vacountc, 1)
+            gridLayout.addWidget(box1, self.vacountc, 2)
+            gridLayout.addWidget(box2, self.vacountc, 3)
+            gridLayout.addWidget(box3, self.vacountc, 4)
+            gridLayout.addWidget(Edit, self.vacountc, 5)
+            plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 3))
+            self.vacountc = self.vacountc + 1
+            count = self.vacountc
+            minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 3))
+
+        elif num == 4:
+            gridLayout.addWidget(plus, self.vacountr, 0)
+            gridLayout.addWidget(minus, self.vacountr, 1)
+            gridLayout.addWidget(box1, self.vacountr, 2)
+            gridLayout.addWidget(box2, self.vacountr, 3)
+            gridLayout.addWidget(box3, self.vacountr, 4)
+            gridLayout.addWidget(Edit, self.vacountr, 5)
+            plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 4))
+            self.vacountr = self.vacountr + 1
+            count = self.vacountr
+            minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 4))
+
+
+    # 减号
+    def buttonStateMinus(self, list, count, num):
+        print(count)
+        # print(list)
+        if count > 3:
+            plus = list[count * 6 - 6]
+            print('plus:' + str(count * 6 - 6))
+            minus = list[count * 6 - 5]
+            print('minus:' + str(count * 6 - 5))
+            box1 = list[count * 6 - 4]
+            print('box1:' + str(count * 6 - 4))
+            box2 = list[count * 6 - 3]
+            print('box2:' + str(count * 6 - 3))
+            box3 = list[count * 6 - 2]
+            print('box3:' + str(count * 6 - 2))
+            Edit = list[count * 4 - 1]
+            print('Edit:' + str(count * 6 - 1))
+            plus.deleteLater()
+            minus.deleteLater()
+            box1.deleteLater()
+            box2.deleteLater()
+            box3.deleteLater()
+            Edit.deleteLater()
+            list.remove(plus)
+            list.remove(minus)
+            list.remove(box1)
+            list.remove(box2)
+            list.remove(box3)
+            list.remove(Edit)
+            if num == 1:
+                self.mmcountc = self.mmcountc - 1
+            elif num == 2:
+                self.mmcountr = self.mmcountr - 1
+            elif num == 3:
+                self.vacountc = self.vacountc - 1
+            elif num == 4:
+                self.vacountr = self.vacountr - 1
     # def closeEvent(self, event):
     #     title = self.names[0] + '.txt'
     #     print(title)

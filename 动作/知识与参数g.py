@@ -59,7 +59,6 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         # 陈述知识槽增减
         self.WIDGETSLIST = []
         self.count = 0
-
         plus = QPushButton( '+' );
         plus.setMaximumWidth( 30 )
         minus = QPushButton( '-' );
@@ -467,6 +466,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
         self.count = self.count+1
 
     def buttonStateMinus(self):
+        print(self.count)
         if(self.count>2):
             plus = self.WIDGETSLIST[self.count * 6 - 6]
             minus = self.WIDGETSLIST[self.count * 6 - 5]
