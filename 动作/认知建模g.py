@@ -102,7 +102,7 @@ class RunModelHandler( QThread ):
 
     def __init__(self,parent=None):
         super( RunModelHandler, self ).__init__( parent )
-        self.roal = 2 # 角色判断 1为声纳检测员 2为指挥官 3为武器系统(需要传参赋值)
+        self.roal = 3 # 角色判断 1为声纳检测员 2为指挥官 3为武器系统(需要传参赋值)
 
         self.sginal = True
         self.Now = lambda: float( round( time() * 1000 ) )  # 毫秒级时间戳
@@ -139,6 +139,8 @@ class RunModelHandler( QThread ):
             self.RunModel_Sonar(QTime.currentTime())
         elif self.roal==2:
             self.RunModel_commander(QTime.currentTime())
+        elif self.roal==3:
+            self.RunModel_arms(QTime.currentTime())
     def RunModel_Sonar(self, now):
         self.startModel()
         self.auditoryModule( tac=100 )
@@ -228,6 +230,55 @@ class RunModelHandler( QThread ):
         self.procedualModule( tac=150 )  # 知识触发
         self.motorSpeechModule( tac=5000, speech='事件记录' )  # 基本本次事件
         self.vacancyOrWait( tac=1000 )  # 等待3
+        self.endModel()
+        self.totalModelTime = self.Now() - self.startTime
+        self.trigger.emit( '' )
+        self.trigger.emit( '' )
+        self.trigger.emit( 'Declarative\tImaginal\tManual\tGoal\tVision\tSpeech\tAuditory' )
+        self.trigger.emit( 'Active Time' )
+        self.trigger.emit(
+            '{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}'.format( self.Td, self.Ti, self.Tm, self.Tg, self.Tv, self.Ts,
+                                                        self.Ta ) )
+        self.trigger.emit(
+            '{0}%\t{1}%\t{2}%\t{3}%\t{4}%\t{5}%\t{6}'.format( round( 100 * self.Td / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Ti / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Tm / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Tg / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Tv / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Ts / self.totalActiveTime, 1 ),
+                                                              round( 100 * self.Ta / self.totalActiveTime, 1 ) ) )
+        self.trigger.emit( 'Cognitive Workload' )
+        self.trigger.emit(
+            '{0:.3f}\t{1:.3f}\t{2:.3f}\t{3:.3f}\t{4:.3f}\t{5:.3f}\t{6:.3f}'.format( self.Wd, self.Wi, self.Wm, self.Wg,
+                                                                                    self.Wv, self.Ws, self.Wa ) )
+        self.trigger.emit(
+            '{0:.2f}%\t{1:.2f}%\t{2:.2f}%\t{3:.2f}%\t{4:.2f}%\t{5:.2f}%\t{6:.2f}%'.format(
+                100 * self.Wd / self.totalWorkload,
+                100 * self.Wi / self.totalWorkload,
+                100 * self.Wm / self.totalWorkload,
+                100 * self.Wg / self.totalWorkload,
+                100 * self.Wv / self.totalWorkload,
+                100 * self.Ws / self.totalWorkload,
+                100 * self.Wa / self.totalWorkload ) )
+        self.trigger.emit( '' )
+        self.trigger.emit( 'Total Workload: {0}'.format( self.totalWorkload ) )
+        self.trigger.emit( 'Total Module Active Time: {0} ms'.format( self.totalActiveTime ) )
+        self.trigger.emit( 'Total Modle Run Time: {0} ms'.format( self.totalModelTime ) )
+
+    def RunModel_arms(self,now):
+        self.startModel()
+        self.acceptModule( tac=100 )  # 接受指挥信号
+        self.declarativeModule( tac=2500 )  # 陈述知识
+        self.imaginalModule( tac=2500 )  # 知识检索
+        self.procedualModule( tac=100 )  # 知识触发
+        self.visionModule( tac=150 )  # 瞄准目标方位
+        self.motorSpeechModule( tac=5000, speech='收到指令、剩余武器种类、剩余武器数目，命令是否存在冲突' )  # 报告收到，发送武器系统基本信息给指挥
+        self.acceptModule( tac=100 )  # 再次接受指挥信号
+        self.declarativeModule( tac=100 )  # 陈述知识
+        self.imaginalModule( tac=100 )  # 知识检索
+        self.procedualModule( tac=100 )  # 知识触发
+        self.motorManualModule( tac=3000 )  # 执行命令
+        self.motorSpeechModule( tac=5000, speech='完成指令、剩余武器种类、剩余武器数目' )  # 报告完成
         self.endModel()
         self.totalModelTime = self.Now() - self.startTime
         self.trigger.emit( '' )
