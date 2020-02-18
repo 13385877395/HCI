@@ -11,6 +11,7 @@ from PyQt5 import QtWidgets
 from CProcedure import proModeling, showall
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMenu
+from functools import partial
 
 
 class actForm(QtWidgets.QWidget, Ui_Frame):
@@ -38,20 +39,23 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.listWidget_5.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
 
-        # 手工建模条件
-        self.mmconditon = []
+        # 手工建模条件 - 1
+        self.mmconditon = [[]]
         self.mmcountc = 1
-        # 手工建模结果
-        self.mmresult = []
+        # 手工建模结果 - 2
+        self.mmresult = [[]]
         self.mmcountr = 1
-        # 视频分析条件
-        self.vaconditon = []
+        # 视频分析条件 - 3
+        self.vaconditon = [[]]
         self.vacountc = 1
-        # 视频分析结果
-        self.varesult = []
+        # 视频分析结果 -4
+        self.varesult = [[]]
         self.vacountr = 1
         # 条件结果初始化
         self.inif(self.gridLayout_18, self.mmconditon, 1)
+        self.inif(self.gridLayout_19, self.mmresult, 2)
+        self.inif(self.gridLayout_11, self.vaconditon, 3)
+        self.inif(self.gridLayout_14, self.varesult, 4)
         # self.inif(self.gridLayout_19, self.mmresult, self.mmcountr, '结果')
         # 增
 
@@ -267,9 +271,11 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         gridLayout.addWidget(box2, 0, 4)
         gridLayout.addWidget(Edit, 0, 5)
         self.buttonStatePlus(gridLayout, list, num)
+        self.buttonStatePlus(gridLayout, list, num)
 
     # 加号
     def buttonStatePlus(self, gridLayout, list, num):
+        L = []
         plus = QPushButton('+')
         plus.setMaximumWidth(30)
         minus = QPushButton('-')
@@ -282,12 +288,13 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         box3.setMaximumWidth(100)
         Edit = QLineEdit()
         Edit.setMaximumWidth(100)
-        list.append(plus)
-        list.append(minus)
-        list.append(box1)
-        list.append(box2)
-        list.append(box3)
-        list.append(Edit)
+        L.append(plus)
+        L.append(minus)
+        L.append(box1)
+        L.append(box2)
+        L.append(box3)
+        L.append(Edit)
+        list.append(L)
         if num == 1:
             gridLayout.addWidget(plus, self.mmcountc, 0)
             gridLayout.addWidget(minus, self.mmcountc, 1)
@@ -298,7 +305,6 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 1))
             count = self.mmcountc
             self.mmcountc = self.mmcountc + 1
-
             minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 1))
 
         elif num == 2:
@@ -309,8 +315,8 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             gridLayout.addWidget(box3, self.mmcountr, 4)
             gridLayout.addWidget(Edit, self.mmcountr, 5)
             plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 2))
-            self.mmcountr = self.mmcountr + 1
             count = self.mmcountr
+            self.mmcountr = self.mmcountr + 1
             minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 2))
 
         elif num == 3:
@@ -321,8 +327,8 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             gridLayout.addWidget(box3, self.vacountc, 4)
             gridLayout.addWidget(Edit, self.vacountc, 5)
             plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 3))
-            self.vacountc = self.vacountc + 1
             count = self.vacountc
+            self.vacountc = self.vacountc + 1
             minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 3))
 
         elif num == 4:
@@ -333,48 +339,48 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             gridLayout.addWidget(box3, self.vacountr, 4)
             gridLayout.addWidget(Edit, self.vacountr, 5)
             plus.clicked.connect(lambda: self.buttonStatePlus(gridLayout, list, 4))
-            self.vacountr = self.vacountr + 1
             count = self.vacountr
+            self.vacountr = self.vacountr + 1
             minus.clicked.connect(lambda: self.buttonStateMinus(list, count, 4))
-
 
     # 减号
     def buttonStateMinus(self, list, count, num):
-        print(count)
-        # print(list)
-        if count > 3:
-            plus = list[count * 6 - 6]
-            print('plus:' + str(count * 6 - 6))
-            minus = list[count * 6 - 5]
-            print('minus:' + str(count * 6 - 5))
-            box1 = list[count * 6 - 4]
-            print('box1:' + str(count * 6 - 4))
-            box2 = list[count * 6 - 3]
-            print('box2:' + str(count * 6 - 3))
-            box3 = list[count * 6 - 2]
-            print('box3:' + str(count * 6 - 2))
-            Edit = list[count * 4 - 1]
-            print('Edit:' + str(count * 6 - 1))
+        L = list[count]
+        if count > 2:
+            plus = L[0]
+            minus = L[1]
+            box1 = L[2]
+            box2 = L[3]
+            box3 = L[4]
+            Edit = L[5]
             plus.deleteLater()
             minus.deleteLater()
             box1.deleteLater()
             box2.deleteLater()
             box3.deleteLater()
             Edit.deleteLater()
-            list.remove(plus)
-            list.remove(minus)
-            list.remove(box1)
-            list.remove(box2)
-            list.remove(box3)
-            list.remove(Edit)
+            list.remove(L)
             if num == 1:
                 self.mmcountc = self.mmcountc - 1
+                for n in range(count, self.mmcountc):
+                    list[n][1].clicked.disconnect()
+                    list[n][1].clicked.connect(partial(self.buttonStateMinus, list, n, 1))
             elif num == 2:
                 self.mmcountr = self.mmcountr - 1
+                for n in range(count, self.mmcountr):
+                    list[n][1].clicked.disconnect()
+                    list[n][1].clicked.connect(partial(self.buttonStateMinus, list, n, 2))
             elif num == 3:
                 self.vacountc = self.vacountc - 1
+                for n in range(count, self.vacountc):
+                    list[n][1].clicked.disconnect()
+                    list[n][1].clicked.connect(partial(self.buttonStateMinus, list, n, 3))
             elif num == 4:
                 self.vacountr = self.vacountr - 1
+                for n in range(count, self.vacountr):
+                    list[n][1].clicked.disconnect()
+                    list[n][1].clicked.connect(partial(self.buttonStateMinus, list, n, 4))
+
     # def closeEvent(self, event):
     #     title = self.names[0] + '.txt'
     #     print(title)

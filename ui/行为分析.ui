@@ -31,7 +31,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="icon">
@@ -227,8 +227,22 @@ p, li { white-space: pre-wrap; }
            </item>
           </layout>
          </item>
-         <item row="4" column="2" colspan="3">
+         <item row="5" column="1">
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>增加</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2" colspan="3">
           <layout class="QGridLayout" name="gridLayout_14"/>
+         </item>
+         <item row="3" column="4">
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>预览</string>
+           </property>
+          </widget>
          </item>
          <item row="0" column="3">
           <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -251,17 +265,7 @@ p, li { white-space: pre-wrap; }
            </item>
           </layout>
          </item>
-         <item row="5" column="4">
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>预览</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2" colspan="3">
-          <layout class="QGridLayout" name="gridLayout_11"/>
-         </item>
-         <item row="6" column="2" rowspan="2" colspan="3">
+         <item row="4" column="2" rowspan="2" colspan="3">
           <layout class="QVBoxLayout" name="verticalLayout_18">
            <item>
             <widget class="QLabel" name="label_27">
@@ -288,14 +292,14 @@ p, li { white-space: pre-wrap; }
            </item>
           </layout>
          </item>
-         <item row="7" column="0">
+         <item row="5" column="0">
           <widget class="QPushButton" name="pushButton_10">
            <property name="text">
             <string>格式检查</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0" rowspan="7" colspan="2">
+         <item row="0" column="0" rowspan="5" colspan="2">
           <layout class="QVBoxLayout" name="verticalLayout_17">
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -366,38 +370,8 @@ p, li { white-space: pre-wrap; }
            </item>
           </layout>
          </item>
-         <item row="7" column="1">
-          <widget class="QPushButton" name="pushButton_5">
-           <property name="text">
-            <string>增加</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QLabel" name="label_11">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>结果</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLabel" name="label_13">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>条件</string>
-           </property>
-          </widget>
+         <item row="1" column="2" colspan="3">
+          <layout class="QGridLayout" name="gridLayout_11"/>
          </item>
         </layout>
        </widget>
