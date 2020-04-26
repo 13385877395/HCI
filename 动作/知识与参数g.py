@@ -473,7 +473,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
             solt = self.WIDGETSLIST[self.count * 6 - 4]
             box = self.WIDGETSLIST[self.count * 6 - 3]
             value = self.WIDGETSLIST[self.count * 6 - 2]
-            Edit = self.WIDGETSLIST[self.count * 4 - 1]
+            Edit = self.WIDGETSLIST[self.count * 6 - 1]
             plus.deleteLater()
             minus.deleteLater()
             solt.deleteLater()
@@ -486,7 +486,7 @@ class knowForm(QtWidgets.QWidget, Ui_Frame):
             self.WIDGETSLIST.remove( box )
             self.WIDGETSLIST.remove( value )
             self.WIDGETSLIST.remove( Edit )
-            self.count = self.count - 1;
+            self.count = self.count - 1
 
     #每个操作后用于保存数据
     # def saveData(self):
