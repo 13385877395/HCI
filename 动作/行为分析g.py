@@ -40,21 +40,21 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
 
         # 手工建模条件 - 1
-        self.mmconditon = [[]]
+        self.mmcondition = []
         self.mmcountc = 1
         # 手工建模结果 - 2
-        self.mmresult = [[]]
+        self.mmresult = []
         self.mmcountr = 1
         # 视频分析条件 - 3
-        self.vaconditon = [[]]
+        self.vacondition = []
         self.vacountc = 1
         # 视频分析结果 -4
-        self.varesult = [[]]
+        self.varesult = []
         self.vacountr = 1
         # 条件结果初始化
-        self.inif(self.gridLayout_18, self.mmconditon, 1)
+        self.inif(self.gridLayout_18, self.mmcondition, 1)
         self.inif(self.gridLayout_19, self.mmresult, 2)
-        self.inif(self.gridLayout_11, self.vaconditon, 3)
+        self.inif(self.gridLayout_11, self.vacondition, 3)
         self.inif(self.gridLayout_14, self.varesult, 4)
         # self.inif(self.gridLayout_19, self.mmresult, self.mmcountr, '结果')
         # 增
@@ -260,12 +260,18 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             Lab = QLabel('条件')
         elif num == 2 or num == 4:
             Lab = QLabel('结果')
+        L = []
         box1 = QComboBox()
         box1.setMaximumWidth(100)
         box2 = QComboBox()
         box2.setMaximumWidth(100)
         Edit = QLineEdit()
         Edit.setMaximumWidth(100)
+        L.append(box1)
+        L.append(box2)
+        L.append(Edit)
+        self.cash(L)
+        list.append(L)
         gridLayout.addWidget(Lab, 0, 0)
         gridLayout.addWidget(box1, 0, 3)
         gridLayout.addWidget(box2, 0, 4)
@@ -294,6 +300,7 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         L.append(box2)
         L.append(box3)
         L.append(Edit)
+        self.cash(L)
         list.append(L)
         if num == 1:
             gridLayout.addWidget(plus, self.mmcountc, 0)
@@ -380,6 +387,19 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
                 for n in range(count, self.vacountr):
                     list[n][1].clicked.disconnect()
                     list[n][1].clicked.connect(partial(self.buttonStateMinus, list, n, 4))
+
+    #缓冲器赋值
+    def cash(self, comboboxs):
+        symbol = ['', '=', '+', '-', '?']
+        list1 = ['', 'goal', 'retrieval']
+        list2 = ['', 'isa', '=']
+        if len(comboboxs) == 3:
+            comboboxs[0].addItems(list1)
+            comboboxs[1].addItems(list2)
+        elif len(comboboxs) == 6:
+            comboboxs[2].addItems(symbol)
+            comboboxs[3].addItems(list1)
+            comboboxs[4].addItems(list2)
 
     # def closeEvent(self, event):
     #     title = self.names[0] + '.txt'

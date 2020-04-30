@@ -36,12 +36,22 @@ class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
         self.child3.close()
         self.gridLayout.addWidget(self.child2)  # 添加子窗口
         self.child2.show()
+
         # 参数传递
-        # print(self.child2.mmconditon[0:])
-        # print(len(self.child2.mmconditon))
-        for bar in self.child2.mmconditon[1:]:
+        for bar in self.child2.mmcondition[1:]:
             for Feature in self.child1.modelFeatureList:
-                bar[2].addItem(Feature[0])
+                bar[3].addItem(Feature[0])
+        for bar in self.child2.mmresult[1:]:
+            for Feature in self.child1.modelFeatureList:
+                bar[3].addItem(Feature[0])
+        for bar in self.child2.vacondition[1:]:
+            for Feature in self.child1.modelFeatureList:
+                bar[3].addItem(Feature[0])
+        for bar in self.child2.varesult[1:]:
+            for Feature in self.child1.modelFeatureList:
+                bar[3].addItem(Feature[0])
+
+
 
     def child3Show(self):
         self.child1.close()
