@@ -34,14 +34,18 @@ class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
     def child2Show(self):
         self.child1.close()
         self.child3.close()
-
         self.gridLayout.addWidget(self.child2)  # 添加子窗口
         self.child2.show()
+        # 参数传递
+        # print(self.child2.mmconditon[0:])
+        # print(len(self.child2.mmconditon))
+        for bar in self.child2.mmconditon[1:]:
+            for Feature in self.child1.modelFeatureList:
+                bar[2].addItem(Feature[0])
 
     def child3Show(self):
         self.child1.close()
         self.child2.close()
-
         self.gridLayout.addWidget(self.child3)  # 添加子窗口
         self.child3.show()
         # 先判断lisp文件是否存在，再进行输出
