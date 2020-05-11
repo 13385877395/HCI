@@ -3,12 +3,10 @@ import sys
 from PyQt5.QtGui import QCursor
 
 sys.path.append('../ui/')
-sys.path.append('../类/')
-from PyQt5.QtWidgets import QApplication, QMessageBox, QPushButton, QLineEdit, QComboBox, QLabel
+from PyQt5.QtWidgets import QApplication, QMessageBox, QPushButton, QLineEdit, QComboBox, QLabel, QListWidgetItem
 from test.test import *
 from 行为分析 import Ui_Frame
 from PyQt5 import QtWidgets
-from CProcedure import proModeling, showall
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMenu
 from functools import partial
@@ -25,16 +23,19 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
         # 手工建模
         self.pushButton_4.clicked.connect(lambda: self.Preview(self.mmcondition, self.mmresult, self.lineEdit, self.textBrowser_4))
         self.pushButton_3.clicked.connect(self.add)
-        self.listWidget_4.itemClicked.connect(self.QLWclicked)
+        self.listWidget_4.itemClicked.connect(lambda: self.QLWclicked(self.listWidget_4.currentItem(), self.textBrowser_4))
         self.listWidget_4.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_4.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_4))
+        # self.pushButton_9.clicked.connect(self.print)
         # 视频建模
         self.pushButton_2.clicked.connect(lambda: self.Preview(self.vacondition, self.varesult, self.lineEdit_2, self.textBrowser_5))
         self.pushButton_5.clicked.connect(self.add)
+        self.listWidget_6.itemClicked.connect(
+            lambda: self.QLWclicked(self.listWidget_6.currentItem(), self.textBrowser_5))
         self.listWidget_6.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_6.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_6))
         # 生成式
-        # self.listWidget_5.itemClicked.connect(self.QLWclicked3)
+        self.listWidget_5.itemClicked.connect(lambda: self.QLWclicked(self.listWidget_5.currentItem(), self.textEdit))
         self.listWidget_5.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.listWidget_5.customContextMenuRequested.connect(lambda: self.rightMenuShow(self.listWidget_5))
 
@@ -117,9 +118,9 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
                                     self.tr("添加未成功"))
 
     # 知识列表点击功能
-    def QLWclicked(self, item):
+    def QLWclicked(self, item, textBrowser):
         print(item.text())
-        # textBrowser.setText(item.text())
+        textBrowser.setText(self.models[item.text()])
 
     # 右键弹出菜单
     def rightMenuShow(self, qlw):
@@ -138,22 +139,13 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
     def onActionDelete(self, qlw):
         num = qlw.currentRow()
         name = qlw.currentItem().text()
-        self.delmodel(name)
+        self.models.pop(name)
         self.listWidget_4.takeItem(num)
         self.listWidget_6.takeItem(num)
         self.listWidget_5.takeItem(num)
 
     def onActionClear(self, qlw):
         pass
-
-    def delmodel(self, name):
-        num = self.models.name.index(name)
-        self.models.time.pop(num)
-        self.models.name.pop(num)
-        self.models.condition.pop(num)
-        self.models.result.pop(num)
-        self.models.model.pop(num)
-        self.models.len -= 1
 
     # 条件结果初始化
     def inif(self, gridLayout, list, num):
@@ -302,6 +294,10 @@ class actForm(QtWidgets.QWidget, Ui_Frame):
             comboboxs[3].addItems(list1)
             comboboxs[4].addItems(list2)
 
+    # 模型函数测试
+    # def print(self):
+    #     for i in self.models:
+    #         print(self.models[i])
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
