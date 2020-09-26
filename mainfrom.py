@@ -4,9 +4,9 @@ from PyQt5 import QtWidgets
 
 sys.path.append("view/")
 sys.path.append("ui/")
-from 知识与参数g import knowForm
-from 行为分析g   import actForm
-from 认知建模g   import conForm
+from knowForm import knowForm
+from actForm   import actForm
+from conForm   import conForm
 from mian import *
 
 class MainForm(QtWidgets.QMainWindow, Ui_MainWindow):
