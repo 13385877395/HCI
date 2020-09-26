@@ -2,7 +2,7 @@ import sys
 sys.path.append('类/')
 from PyQt5 import QtWidgets
 
-sys.path.append("动作/")
+sys.path.append("view/")
 sys.path.append("ui/")
 from 知识与参数g import knowForm
 from 行为分析g   import actForm
